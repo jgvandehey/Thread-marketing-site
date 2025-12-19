@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thread Compliance Report - Thread</title>
+    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Load Delve first -->
+    <script src="https://cdn.delve.co/src/delve-cookie-consent-default.js"></script>
+
+    <!-- Load Google Analytics early (for consent mode pings) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJW5L0WQVW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-RJW5L0WQVW');
+    </script>
+    <script>
+      // Set up Google Consent Mode defaults
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+
+      gtag('consent', 'default', {
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        ad_storage: 'denied',
+        analytics_storage: 'denied'
+      });
+
+      // Initialize GA (no cookies until consent)
+      gtag('js', new Date());
+      gtag('config', 'G-RJW5L0WQVW', { send_page_view: false });
+    </script>
+
+    <script>
+      DelveCookieConsent.init({
+        message: "We use cookies to enhance your experience and analyze our traffic.",
+        acceptText: "Accept all cookies",
+        rejectText: "Reject non-essential",
+        settingsText: "Cookie preferences",
+        privacyPolicyUrl: "https://www.thread.app/privacy-policy",
+        manageScriptTags: true,
+        ccpaEnabled: false,
+        showInNonRegulatedRegions: true, // allow GA in non-regulated regions
+
+        categories: {
+          necessary: {
+            name: 'Necessary',
+            description: 'Essential cookies required for the website to function.',
+            required: true,
+            enabled: true
+          },
+          analytics: {
+            name: 'Analytics',
+            description: 'Help us understand how visitors use our website.',
+            enabled: false,
+            services: {
+              google_analytics: {
+                label: 'Google Analytics',
+                enabled: true,
+                onAccept: () => {
+                  // Update consent to grant analytics and ads
+                  gtag('consent', 'update', {
+                    analytics_storage: 'granted',
+                    ad_user_data: 'granted',
+                    ad_personalization: 'granted',
+                    ad_storage: 'granted'
+                  });
+
+                  // Send initial page_view now that consent is granted
+                  gtag('event', 'page_view');
+                }
+              }
+            }
+          },
+          marketing: {
+            name: 'Marketing',
+            description: 'Used to track visitors and show ads.',
+            enabled: false,
+            services: {
+              facebook_pixel: {
+                label: 'Facebook Pixel',
+                enabled: true,
+                onAccept: () => {
+                  // Load Facebook Pixel after consent
+                  !window.fbq && (function(f,b,e,v,n,t,s){
+                    if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                    n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+                    s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+                  })(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+                  fbq('init', 'YOUR_PIXEL_ID');
+                  fbq('consent', 'grant');
+                }
+              }
+            }
+          }
+        },
+
+        onAccept: (cats) => console.log('Accepted:', cats),
+        onReject: () => {
+          // Keep everything denied
+          gtag('consent', 'update', {
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            ad_storage: 'denied',
+            analytics_storage: 'denied'
+          });
+          console.log('Non-essential cookies rejected');
+        }
+      });
+    </script>
+
+    <style>
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-font-smoothing: antialiased;
+      -o-font-smoothing: antialiased;
+    }
+    .delve-cookie-banner {
+      z-index: 999999 !important;
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">Thread</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#pricing">Pricing</a>
+                    <a href="index.html#demo" class="btn-primary-nav">Request Demo</a>
+                    <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 8px 16px; font-size: 14px;">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Legal Content -->
+    <section class="post-content" style="padding-top: 160px;">
+        <div class="container">
+            <div class="post-header" style="text-align: center; max-width: 900px; margin: 0 auto 60px;">
+                <h1>Thread Compliance Report</h1>
+                <p style="color: var(--text-light); font-size: 18px; margin-top: 24px;">Thread is in compliance with security best practices, has implemented and is monitoring comprehensive controls, and maintains policies to outline its security procedures.</p>
+            </div>
+            <div class="post-body" style="max-width: 900px; margin: 0 auto;">
+                <div class="post-body-content" style="text-align: center;">
+                    <p style="font-size: 18px; margin-bottom: 40px; color: var(--text-light);">View our comprehensive compliance report, certifications, security controls, and subprocessors on the Delve trust portal.</p>
+                    <div style="margin: 60px 0;">
+                        <a href="https://trust.delve.co/thread" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size: 18px; padding: 16px 40px; display: inline-block;">
+                            View Compliance Report →
+                        </a>
+                    </div>
+                    <p style="color: var(--text-light); font-size: 14px; margin-top: 24px;">The report will open in a new tab.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border-color);">
+                <a href="index.html" class="btn-secondary">← Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">Thread</div>
+                    <p>Built for the future of customer success</p>
+                </div>
+                <div class="footer-ctas">
+                    <a href="index.html#demo" class="btn-primary">Request Demo</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                    <p>&copy; 2025 Thread Solutions Inc. All rights reserved.</p>
+                    <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                        <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Privacy</a>
+                        <a href="terms.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Terms</a>
+                        <a href="subprocessors.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Subprocessors</a>
+                        <a href="cookie-policy.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Cookies</a>
+                        <a href="data-processing-agreement.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">DPA</a>
+                        <a href="compliance-report.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Compliance</a>
+                        <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

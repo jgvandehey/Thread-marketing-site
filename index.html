@@ -3,11 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thread - Unlock Predictable Renewals and Confident Customer Outcomes</title>
+    <title>Thread - Close the Most Expensive Gap in SaaS</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Load Delve first -->
+    <script src="https://cdn.delve.co/src/delve-cookie-consent-default.js"></script>
+
+    <!-- Load Google Analytics early (for consent mode pings) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJW5L0WQVW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-RJW5L0WQVW');
+    </script>
+    <script>
+      // Set up Google Consent Mode defaults
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+
+      gtag('consent', 'default', {
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        ad_storage: 'denied',
+        analytics_storage: 'denied'
+      });
+
+      // Initialize GA (no cookies until consent)
+      gtag('js', new Date());
+      gtag('config', 'G-RJW5L0WQVW', { send_page_view: false });
+    </script>
+
+    <script>
+      DelveCookieConsent.init({
+        message: "We use cookies to enhance your experience and analyze our traffic.",
+        acceptText: "Accept all cookies",
+        rejectText: "Reject non-essential",
+        settingsText: "Cookie preferences",
+        privacyPolicyUrl: "https://www.thread.app/privacy-policy",
+        manageScriptTags: true,
+        ccpaEnabled: false,
+        showInNonRegulatedRegions: true, // allow GA in non-regulated regions
+
+        categories: {
+          necessary: {
+            name: 'Necessary',
+            description: 'Essential cookies required for the website to function.',
+            required: true,
+            enabled: true
+          },
+          analytics: {
+            name: 'Analytics',
+            description: 'Help us understand how visitors use our website.',
+            enabled: false,
+            services: {
+              google_analytics: {
+                label: 'Google Analytics',
+                enabled: true,
+                onAccept: () => {
+                  // Update consent to grant analytics and ads
+                  gtag('consent', 'update', {
+                    analytics_storage: 'granted',
+                    ad_user_data: 'granted',
+                    ad_personalization: 'granted',
+                    ad_storage: 'granted'
+                  });
+
+                  // Send initial page_view now that consent is granted
+                  gtag('event', 'page_view');
+                }
+              }
+            }
+          },
+          marketing: {
+            name: 'Marketing',
+            description: 'Used to track visitors and show ads.',
+            enabled: false,
+            services: {
+              facebook_pixel: {
+                label: 'Facebook Pixel',
+                enabled: true,
+                onAccept: () => {
+                  // Load Facebook Pixel after consent
+                  !window.fbq && (function(f,b,e,v,n,t,s){
+                    if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                    n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+                    s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+                  })(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+                  fbq('init', 'YOUR_PIXEL_ID');
+                  fbq('consent', 'grant');
+                }
+              }
+            }
+          }
+        },
+
+        onAccept: (cats) => console.log('Accepted:', cats),
+        onReject: () => {
+          // Keep everything denied
+          gtag('consent', 'update', {
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            ad_storage: 'denied',
+            analytics_storage: 'denied'
+          });
+          console.log('Non-essential cookies rejected');
+        }
+      });
+    </script>
+
+    <style>
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-font-smoothing: antialiased;
+      -o-font-smoothing: antialiased;
+    }
+    .delve-cookie-banner {
+      z-index: 999999 !important;
+    }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -16,11 +136,10 @@
             <div class="nav-content">
                 <div class="logo">Thread</div>
                 <div class="nav-links">
-                    <a href="#outcomes">Outcomes</a>
-                    <a href="#features">Features</a>
-                    <a href="#integrations">Integrations</a>
+                    <a href="#how-it-works">How It Works</a>
                     <a href="#pricing">Pricing</a>
-                    <a href="#demo" class="btn-primary-nav">Book a demo</a>
+                    <a href="#" class="btn-primary-nav" onclick="openCalendlyModal(); return false;">Request Demo</a>
+                    <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 8px 16px; font-size: 14px;">Sign In</a>
                 </div>
             </div>
         </div>
@@ -29,49 +148,168 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-headline">Unlock predictable renewals and confident customer outcomes</h1>
-                <p class="hero-subheadline">Thread gives your CSMs everything they need to drive adoption, identify risks early, and deliver high value customer meetings that lead to renewals and expansion.</p>
-                <div class="hero-ctas">
-                    <a href="#demo" class="btn-primary">Book a demo</a>
-                    <a href="#renewals" class="btn-secondary">See how Thread drives renewals</a>
+            <div class="hero-two-column">
+                <div class="hero-left">
+                    <h1 class="hero-headline">Close the most expensive gap in SaaS</h1>
+                    <p class="hero-subheadline">Seamless handoffs from Sales to Success</p>
+                    <p style="font-size: 20px; color: var(--text-light); line-height: 1.6; margin-bottom: 40px;">
+                        When your deal moves to "closed won", Thread automatically orchestrates the perfect handoff—no manual work, no context lost, no customer confusion.
+                    </p>
+                    <div class="hero-email-form">
+                        <form class="email-form" id="hero-email-form">
+                            <input type="email" name="email" id="hero-email-input" placeholder="Enter your email" required class="email-input">
+                            <button type="submit" class="btn-primary" id="hero-submit-btn">Get Started</button>
+                        </form>
+                        <p style="font-size: 14px; color: var(--text-light); margin-top: 12px;">
+                            Free trial • No credit card required
+                        </p>
+                        <div id="form-message" style="display: none; margin-top: 12px; font-size: 14px; color: var(--primary-color);"></div>
+                    </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="dashboard-preview">
-                        <div class="dashboard-header">
-                            <div class="dashboard-tabs">
-                                <span class="tab active">Account 360</span>
-                                <span class="tab">Adoption</span>
-                                <span class="tab">Renewal Forecast</span>
+                <div class="hero-right">
+                    <div id="thread-hero-montage">
+                        <div class="montage-wizard-container">
+                            <div class="montage-wizard-steps" id="montage-wizard-steps">
+                                <div class="montage-wizard-step" data-step="0">
+                                    <div class="montage-wizard-step-icon">1</div>
+                                    <div class="montage-wizard-step-label">Deal Status</div>
+                                </div>
+                                <div class="montage-wizard-step" data-step="1">
+                                    <div class="montage-wizard-step-icon">2</div>
+                                    <div class="montage-wizard-step-label">Gathering Context</div>
+                                </div>
+                                <div class="montage-wizard-step" data-step="2">
+                                    <div class="montage-wizard-step-icon">3</div>
+                                    <div class="montage-wizard-step-label">Handoff</div>
+                                </div>
+                                <div class="montage-wizard-step" data-step="3">
+                                    <div class="montage-wizard-step-icon">4</div>
+                                    <div class="montage-wizard-step-label">Portal Ready</div>
+                                </div>
+                                <div class="montage-wizard-step" data-step="4">
+                                    <div class="montage-wizard-step-icon">5</div>
+                                    <div class="montage-wizard-step-label">Time to Value</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="dashboard-content">
-                            <div class="dashboard-metric">
-                                <div class="metric-label">Renewal Probability</div>
-                                <div class="metric-value high">92%</div>
-                                <div class="metric-trend up">↑ 5% this quarter</div>
+                        <div class="montage-thread-line"></div>
+                        <div class="montage-feed" id="montage-feed">
+                            <!-- Cards will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section - Tabbed Interface -->
+    <section id="how-it-works" class="tabbed-section">
+        <div class="container">
+            <h2 class="section-headline">How Thread works</h2>
+            <div class="tabbed-interface">
+                <div class="tabbed-nav">
+                    <button class="tab-btn active" data-tab="handoff">
+                        <span>Reality-based onboarding</span>
+                    </button>
+                    <button class="tab-btn" data-tab="engagement">
+                        <span>Instant Customer Readiness</span>
+                    </button>
+                    <button class="tab-btn" data-tab="provisioning">
+                        <span>No Hand-off Implementation</span>
+                    </button>
+                    <button class="tab-btn" data-tab="context">
+                        <span>Faster Time to Value</span>
+                    </button>
+                </div>
+                <div class="tabbed-content">
+                    <div class="tab-panel active" data-panel="handoff">
+                        <div class="tab-panel-content">
+                            <div class="tab-panel-text">
+                                <h3>Reality-based onboarding</h3>
+                                <p>CRM integration triggers seamless transitions the moment a deal closes. Zero manual steps required.</p>
+                                <ul style="margin-top: 24px; padding-left: 24px;">
+                                    <li style="margin-bottom: 12px; color: var(--text-light);">Automatic deal detection from CRM</li>
+                                    <li style="margin-bottom: 12px; color: var(--text-light);">Instant context capture and transfer</li>
+                                    <li style="margin-bottom: 12px; color: var(--text-light);">Seamless CSM briefing generation</li>
+                                </ul>
                             </div>
-                            <div class="dashboard-chart">
-                                <div class="chart-bars">
-                                    <div class="bar" style="height: 75%"></div>
-                                    <div class="bar" style="height: 85%"></div>
-                                    <div class="bar" style="height: 92%"></div>
-                                    <div class="bar" style="height: 88%"></div>
+                            <div class="tab-panel-screenshot">
+                                <div class="screenshot-large">
+                                    <img src="images/reality.png" alt="Thread Reality-based Onboarding" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="placeholder-content" style="display: none;">
+                                        <span class="placeholder-icon">📸</span>
+                                        <p>Screenshot: Reality-based Onboarding</p>
+                                        <p style="font-size: 12px; margin-top: 8px; opacity: 0.7;">Add reality.png to the images folder</p>
+                                    </div>
                                 </div>
-                                <div class="chart-labels">Adoption Trend</div>
                             </div>
-                            <div class="dashboard-insights">
-                                <div class="insight-item positive">
-                                    <span class="insight-icon">✓</span>
-                                    <span>3 new champions identified</span>
+                        </div>
+                    </div>
+                    <div class="tab-panel" data-panel="engagement">
+                        <div class="tab-panel-content">
+                            <div class="tab-panel-text">
+                                <h3>Instant Customer Readiness</h3>
+                                <p>Connect HubSpot, Slack, Google, and more. Engage customers where they already are.</p>
+                                <ul style="margin-top: 24px; padding-left: 24px;">
+                                    <li style="margin-bottom: 12px; color: var(--text-light);">Multi-platform integration support</li>
+                                    <li style="margin-bottom: 12px; color: var(--text-light);">Unified customer communication</li>
+                                    <li style="margin-bottom: 12px; color: var(--text-light);">Real-time sync across channels</li>
+                                </ul>
+                            </div>
+                            <div class="tab-panel-screenshot">
+                                <div class="screenshot-large">
+                                    <img src="images/portal.png" alt="Thread Customer Portal" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="placeholder-content" style="display: none;">
+                                        <span class="placeholder-icon">📸</span>
+                                        <p>Screenshot: Customer Portal</p>
+                                        <p style="font-size: 12px; margin-top: 8px; opacity: 0.7;">Add portal.png to the images folder</p>
+                                    </div>
                                 </div>
-                                <div class="insight-item positive">
-                                    <span class="insight-icon">✓</span>
-                                    <span>QBR scheduled for next week</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-panel" data-panel="provisioning">
+                        <div class="tab-panel-content">
+                            <div class="tab-panel-text">
+                                <h3>No Hand-off Implementation</h3>
+                                <p>Pre-filled forms, automatic account creation, and instant customer-facing profiles—all done for you.</p>
+                                <ul style="margin-top: 24px; padding-left: 24px;">
+                                    <li style="margin-bottom: 12px; color: var(--text-light);">Automatic account provisioning</li>
+                                    <li style="margin-bottom: 12px; color: var(--text-light);">Pre-configured integrations</li>
+                                    <li style="margin-bottom: 12px; color: var(--text-light);">Instant customer onboarding</li>
+                                </ul>
+                            </div>
+                            <div class="tab-panel-screenshot">
+                                <div class="screenshot-large">
+                                    <img src="images/context-transfer-screenshot.png" alt="Thread Context Transfer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="placeholder-content" style="display: none;">
+                                        <span class="placeholder-icon">📸</span>
+                                        <p>Screenshot: Context Transfer</p>
+                                        <p style="font-size: 12px; margin-top: 8px; opacity: 0.7;">Add context-transfer-screenshot.png to the images folder</p>
+                                    </div>
                                 </div>
-                                <div class="insight-item warning">
-                                    <span class="insight-icon">!</span>
-                                    <span>Feature usage down 12% - action needed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-panel" data-panel="context">
+                        <div class="tab-panel-content">
+                            <div class="tab-panel-text">
+                                <h3>Faster Time to Value</h3>
+                                <p>Stop tracking million-dollar accounts in Google Sheets. Every detail flows seamlessly to your CS team.</p>
+                                <ul style="margin-top: 24px; padding-left: 24px;">
+                                    <li style="margin-bottom: 12px; color: var(--text-light);">Complete deal context preservation</li>
+                                    <li style="margin-bottom: 12px; color: var(--text-light);">Automated CSM briefing documents</li>
+                                    <li style="margin-bottom: 12px; color: var(--text-light);">Real-time context updates</li>
+                                </ul>
+                            </div>
+                            <div class="tab-panel-screenshot">
+                                <div class="screenshot-large">
+                                    <img src="images/ttv.png" alt="Thread Time to Value" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="placeholder-content" style="display: none;">
+                                        <span class="placeholder-icon">📸</span>
+                                        <p>Screenshot: Time to Value</p>
+                                        <p style="font-size: 12px; margin-top: 8px; opacity: 0.7;">Add ttv.png to the images folder</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -81,203 +319,236 @@
         </div>
     </section>
 
-    <!-- Executive Outcomes Section -->
-    <section id="outcomes" class="outcomes-section">
+    <!-- Onboarding Tasks Animation Section -->
+    <section id="onboarding-tasks" class="onboarding-section">
         <div class="container">
-            <h2 class="section-headline">Outcomes your customers feel. Visibility your team can trust.</h2>
-            <div class="outcomes-grid">
-                <div class="outcome-card">
-                    <div class="outcome-icon">📈</div>
-                    <h3>Improve renewal rates</h3>
-                    <p>Detect risks before they become churn and empower CSMs to run proactive customer programs.</p>
+            <h2 class="section-headline">Automated onboarding in action</h2>
+            <p style="text-align: center; font-size: 18px; color: var(--text-light); margin-bottom: 60px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Watch Thread automatically complete onboarding tasks as soon as a deal closes
+            </p>
+            <div class="onboarding-tasks-container">
+                <div class="task-item" data-status="pending">
+                    <div class="task-icon">
+                        <span class="task-status-icon">⏳</span>
+                    </div>
+                    <div class="task-content">
+                        <h3 class="task-title">Grab account executive context</h3>
+                        <p class="task-description">Extracting deal details, promises, and stakeholder information from CRM</p>
+                    </div>
+                    <div class="task-status">
+                        <span class="status-badge status-pending">Planning</span>
+                    </div>
                 </div>
-                <div class="outcome-card">
-                    <div class="outcome-icon">🚀</div>
-                    <h3>Increase product adoption</h3>
-                    <p>Understand exactly where customers are stuck and deliver targeted guidance at scale.</p>
+                <div class="task-item" data-status="pending">
+                    <div class="task-icon">
+                        <span class="task-status-icon">⏳</span>
+                    </div>
+                    <div class="task-content">
+                        <h3 class="task-title">Review contract for deltas</h3>
+                        <p class="task-description">Analyzing contract terms and identifying deviations from standard agreements</p>
+                    </div>
+                    <div class="task-status">
+                        <span class="status-badge status-pending">Planning</span>
+                    </div>
                 </div>
-                <div class="outcome-card">
-                    <div class="outcome-icon">💎</div>
-                    <h3>Drive expansion with confidence</h3>
-                    <p>Surface usage patterns, new champions, and real opportunities for additional value.</p>
+                <div class="task-item" data-status="pending">
+                    <div class="task-icon">
+                        <span class="task-status-icon">⏳</span>
+                    </div>
+                    <div class="task-content">
+                        <h3 class="task-title">Provision customer account access</h3>
+                        <p class="task-description">Creating user accounts and setting up access permissions</p>
+                    </div>
+                    <div class="task-status">
+                        <span class="status-badge status-pending">Planning</span>
+                    </div>
                 </div>
-                <div class="outcome-card">
-                    <div class="outcome-icon">⚡</div>
-                    <h3>Scale CSM impact</h3>
-                    <p>Automate prep, updates, and follow-ups so your team can focus on strategy, not admin work.</p>
+                <div class="task-item" data-status="pending">
+                    <div class="task-icon">
+                        <span class="task-status-icon">⏳</span>
+                    </div>
+                    <div class="task-content">
+                        <h3 class="task-title">Configure product integrations</h3>
+                        <p class="task-description">Setting up required integrations based on contract specifications</p>
+                    </div>
+                    <div class="task-status">
+                        <span class="status-badge status-pending">Planning</span>
+                    </div>
                 </div>
-                <div class="outcome-card">
-                    <div class="outcome-icon">🎯</div>
-                    <h3>Make customer health predictable</h3>
-                    <p>Thread analyzes usage, sentiment, meetings, and support patterns to give you a real signal, not a spreadsheet guess.</p>
+                <div class="task-item" data-status="pending">
+                    <div class="task-icon">
+                        <span class="task-status-icon">⏳</span>
+                    </div>
+                    <div class="task-content">
+                        <h3 class="task-title">Generate CSM briefing document</h3>
+                        <p class="task-description">Compiling comprehensive handoff brief with all deal context</p>
+                    </div>
+                    <div class="task-status">
+                        <span class="status-badge status-pending">Planning</span>
+                    </div>
+                </div>
+                <div class="task-item" data-status="pending">
+                    <div class="task-icon">
+                        <span class="task-status-icon">⏳</span>
+                    </div>
+                    <div class="task-content">
+                        <h3 class="task-title">Schedule kickoff meeting</h3>
+                        <p class="task-description">Automatically scheduling onboarding kickoff with all stakeholders</p>
+                    </div>
+                    <div class="task-status">
+                        <span class="status-badge status-pending">Planning</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CS Performance Section -->
-    <section id="features" class="cs-performance-section">
+    <!-- Problem Section -->
+    <section class="cs-performance-section">
         <div class="container">
-            <h2 class="section-headline">Everything your CSMs need in one workflow</h2>
-            <div class="performance-grid">
-                <div class="performance-card">
-                    <div class="card-number">01</div>
-                    <h3>Always be prepared</h3>
-                    <p>Thread automatically generates call briefs with usage trends, open risks, stakeholder changes, and next steps.</p>
+            <h2 class="section-headline">The problem</h2>
+            <div class="problem-two-column">
+                <div class="problem-text-column">
+                    <p class="explainer-text" style="font-size: 20px; line-height: 1.8; margin-bottom: 24px; font-weight: 600;">
+                        Implementation isn't rooted in reality.
+                    </p>
+                    <p class="explainer-text" style="font-size: 18px; line-height: 1.8; margin-bottom: 24px;">
+                        Sales closes a deal based on what was promised and what the customer actually uses. Then the deal moves to Closed Won — and that reality disappears.
+                    </p>
+                    <p class="explainer-text" style="font-size: 18px; line-height: 1.8; margin-bottom: 32px;">
+                        CS teams start onboarding by reconstructing context from calls, notes, and spreadsheets while the customer waits.
+                    </p>
+                    <p class="explainer-text" style="font-size: 18px; line-height: 1.8; margin-bottom: 24px;">
+                        When implementation starts from reconstruction instead of reality:
+                    </p>
+                    <ul style="font-size: 18px; line-height: 1.8; margin-bottom: 32px; padding-left: 24px; color: var(--text-light);">
+                        <li style="margin-bottom: 12px;">Onboarding is generic</li>
+                        <li style="margin-bottom: 12px;">Expectations drift</li>
+                        <li style="margin-bottom: 12px;">Time to value slows</li>
+                    </ul>
+                    <p class="explainer-text" style="font-size: 20px; font-weight: 600; color: var(--text-dark); margin-top: 40px;">
+                        Thread ensures implementation starts from reality, not reconstruction.
+                    </p>
                 </div>
-                <div class="performance-card">
-                    <div class="card-number">02</div>
-                    <h3>Run high value meetings</h3>
-                    <p>Thread guides CSMs with insights, data, and playbooks in real time so every conversation drives progress.</p>
-                </div>
-                <div class="performance-card">
-                    <div class="card-number">03</div>
-                    <h3>Eliminate post-call admin</h3>
-                    <p>Meeting summaries, tasks, CRM notes, and updates are created instantly and pushed into your systems.</p>
-                </div>
-                <div class="performance-card">
-                    <div class="card-number">04</div>
-                    <h3>Standardize quality across the team</h3>
-                    <p>Thread ensures every CSM delivers the same high standard of onboarding, adoption, and renewal execution.</p>
+                <div class="problem-graphic-column">
+                    <h3 style="font-size: 24px; font-weight: 600; color: var(--text-dark); margin-bottom: 32px;">
+                        What usually gets lost at handoff
+                    </h3>
+                    <div class="handoff-graphic">
+                        <div class="handoff-column">
+                            <div class="handoff-column-header">Prospect reality</div>
+                            <div class="handoff-column-label">What the customer uses & wants</div>
+                            <ul class="handoff-list">
+                                <li>Their tools</li>
+                                <li>Their goals</li>
+                                <li>Their constraints</li>
+                            </ul>
+                        </div>
+                        <div class="handoff-column">
+                            <div class="handoff-column-header">Sales context</div>
+                            <div class="handoff-column-label">What was sold</div>
+                            <ul class="handoff-list">
+                                <li>Commitments</li>
+                                <li>Success criteria</li>
+                                <li>Contract terms</li>
+                            </ul>
+                        </div>
+                        <div class="handoff-column handoff-column-problem">
+                            <div class="handoff-column-header">Typical implementation</div>
+                            <div class="handoff-column-label">Starts from scratch</div>
+                            <ul class="handoff-list">
+                                <li>Assumptions</li>
+                                <li>Generic setup</li>
+                                <li>Manual reconstruction</li>
+                            </ul>
+                        </div>
+                        <div class="handoff-column handoff-column-solution">
+                            <div class="handoff-column-header">With Thread</div>
+                            <div class="handoff-column-label">Implementation rooted in reality</div>
+                            <ul class="handoff-list">
+                                <li>Context carried forward</li>
+                                <li>Tools pre-connected</li>
+                                <li>Faster time to value</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Feature Pillars Section -->
+    <!-- Why Different Section -->
     <section class="pillars-section">
         <div class="container">
-            <div class="pillar-item">
-                <div class="pillar-content">
-                    <h2>Predictive customer health</h2>
-                    <p>Thread combines product usage, support history, meeting sentiment, stakeholder engagement, and timelines to produce an accurate, dynamic health signal.</p>
-                    <div class="pillar-outcome">
-                        <strong>Outcome:</strong> No surprises at renewal time.
-                    </div>
-                </div>
-                <div class="pillar-visual">
-                    <div class="health-score-visual">
-                        <div class="health-meter">
-                            <div class="meter-fill" style="width: 87%"></div>
-                        </div>
-                        <div class="health-factors">
-                            <div class="factor positive">Usage: Strong</div>
-                            <div class="factor positive">Sentiment: Positive</div>
-                            <div class="factor neutral">Support: Normal</div>
-                            <div class="factor positive">Engagement: High</div>
-                        </div>
-                    </div>
-                </div>
+            <h2 class="section-headline">What makes Thread different</h2>
+            <div class="comparison-intro" style="max-width: 800px; margin: 0 auto 48px; text-align: center;">
+                <p style="font-size: 22px; font-weight: 600; line-height: 1.5; color: var(--text-dark); margin-bottom: 24px;">
+                    CRMs and Customer Success Platforms were built to record what happened. Thread was built to make the right thing happen next.
+                </p>
             </div>
-
-            <div class="pillar-item reverse">
-                <div class="pillar-content">
-                    <h2>Automated QBR and Success Plan creation</h2>
-                    <p>Thread pulls data from across your stack to generate executive ready QBRs, adoption updates, and renewal briefs.</p>
-                    <div class="pillar-outcome">
-                        <strong>Outcome:</strong> Every customer gets consistent value conversations and clear next steps.
-                    </div>
-                </div>
-                <div class="pillar-visual">
-                    <div class="qbr-preview">
-                        <div class="qbr-header">QBR Document</div>
-                        <div class="qbr-sections">
-                            <div class="qbr-section">Executive Summary</div>
-                            <div class="qbr-section">Adoption Metrics</div>
-                            <div class="qbr-section">Success Stories</div>
-                            <div class="qbr-section">Next Steps</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>CRMs</th>
+                            <th>Customer Success Platforms</th>
+                            <th>Thread</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="comparison-label">Purpose</td>
+                            <td>Store deal and account data</td>
+                            <td>Track customer health and risk</td>
+                            <td class="comparison-highlight">Orchestrate what happens when a customer relationship changes</td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-label">Context handling</td>
+                            <td>Store context</td>
+                            <td>Aggregate context</td>
+                            <td class="comparison-highlight">Turns context into automated action</td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-label">Churn approach</td>
+                            <td>Passive, retrospective</td>
+                            <td>Reactive to churn signals</td>
+                            <td class="comparison-highlight">Prevents churn by fixing onboarding and handoff</td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-label">Work required</td>
+                            <td>Require manual updates</td>
+                            <td>Require ongoing maintenance</td>
+                            <td class="comparison-highlight">Removes work through automation</td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-label">Configuration</td>
+                            <td>Heavy setup and customization</td>
+                            <td>Complex configuration and tuning</td>
+                            <td class="comparison-highlight">Runs automatically from CRM triggers</td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-label">Time to value</td>
+                            <td>Slow, process-driven</td>
+                            <td>Gradual, dashboard-driven</td>
+                            <td class="comparison-highlight">Immediate, event-driven</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-
-            <div class="pillar-item">
-                <div class="pillar-content">
-                    <h2>Real time meeting intelligence</h2>
-                    <p>Thread listens on calls and helps CSMs:</p>
-                    <ul class="pillar-list">
-                        <li>Identify risks</li>
-                        <li>Highlight expansion opportunities</li>
-                        <li>Capture action items</li>
-                        <li>Update CRM</li>
-                        <li>Trigger workflows</li>
-                        <li>Share resources instantly</li>
-                    </ul>
-                    <div class="pillar-outcome">
-                        <strong>Outcome:</strong> Higher quality interactions with less prep time.
-                    </div>
-                </div>
-                <div class="pillar-visual">
-                    <div class="meeting-intel">
-                        <div class="intel-item">
-                            <span class="intel-type risk">Risk Detected</span>
-                            <span class="intel-text">Feature usage declining</span>
-                        </div>
-                        <div class="intel-item">
-                            <span class="intel-type opportunity">Opportunity</span>
-                            <span class="intel-text">Expansion potential identified</span>
-                        </div>
-                        <div class="intel-item">
-                            <span class="intel-type action">Action Item</span>
-                            <span class="intel-text">Schedule training session</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pillar-item reverse">
-                <div class="pillar-content">
-                    <h2>The Customer Success Hub</h2>
-                    <p>A shared workspace where customers and CSMs collaborate on outcomes, track progress, and stay aligned.</p>
-                    <div class="pillar-outcome">
-                        <strong>Outcome:</strong> Customer trust and engagement increase, accelerating value realization.
-                    </div>
-                </div>
-                <div class="pillar-visual">
-                    <div class="hub-preview">
-                        <div class="hub-header">Success Hub</div>
-                        <div class="hub-content">
-                            <div class="hub-item">Goals & Outcomes</div>
-                            <div class="hub-item">Progress Tracking</div>
-                            <div class="hub-item">Resources & Playbooks</div>
-                            <div class="hub-item">Team Collaboration</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof Section -->
-    <section class="social-proof-section">
-        <div class="container">
-            <h2 class="section-headline">Loved by customer success teams. Trusted by leadership.</h2>
-            <div class="quotes-grid">
-                <div class="quote-card">
-                    <div class="quote-text">"We reduced renewal surprises by 40 percent in the first quarter."</div>
-                    <div class="quote-author">VP of Customer Success</div>
-                </div>
-                <div class="quote-card">
-                    <div class="quote-text">"Our QBR quality has never been higher."</div>
-                    <div class="quote-author">Chief Customer Officer</div>
-                </div>
-                <div class="quote-card">
-                    <div class="quote-text">"Thread gives us visibility we have never had across accounts."</div>
-                    <div class="quote-author">Director of CS Operations</div>
-                </div>
-                <div class="quote-card">
-                    <div class="quote-text">"Our CSMs produce twice the output with half the effort."</div>
-                    <div class="quote-author">VP of Customer Success</div>
-                </div>
-            </div>
-            <div class="logos-section">
-                <div class="logo-grid">
-                    <div class="logo-placeholder">HR Tech</div>
-                    <div class="logo-placeholder">Dev Tools</div>
-                    <div class="logo-placeholder">Fintech</div>
-                    <div class="logo-placeholder">Martech</div>
-                    <div class="logo-placeholder">Analytics</div>
-                </div>
+            <div class="comparison-narrative" style="max-width: 800px; margin: 48px auto 0; text-align: left;">
+                <p style="font-size: 17px; line-height: 1.8; color: var(--text-dark); margin-bottom: 20px;">
+                    CRMs and Customer Success Platforms are essential. They capture the data, track the metrics, and surface the insights your team needs. But they were designed to record and report—not to act.
+                </p>
+                <p style="font-size: 17px; line-height: 1.8; color: var(--text-dark); margin-bottom: 20px;">
+                    Thread sits alongside your existing stack, not underneath it. When your CRM shows a deal moved to Closed Won, Thread automatically orchestrates the handoff. When your CSP flags a risk, Thread has already prevented it by ensuring proper onboarding from day one.
+                </p>
+                <p style="font-size: 17px; line-height: 1.8; color: var(--text-dark); margin-bottom: 20px;">
+                    The moment of highest value—and highest risk—is when a customer relationship changes. That's when Thread becomes most valuable. That's when context must become action.
+                </p>
+                <p style="font-size: 20px; font-weight: 600; line-height: 1.6; color: var(--text-dark); text-align: center; margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--border-color);">
+                    Thread doesn't replace your CRM or CSP. It fixes the moment they ignore.
+                </p>
             </div>
         </div>
     </section>
@@ -285,8 +556,8 @@
     <!-- Integrations Section -->
     <section id="integrations" class="integrations-section">
         <div class="container">
-            <h2 class="section-headline">Works with your tools and your data stack</h2>
-            <p class="integrations-subtext">Connect once and Thread automatically keeps customer data, insights, and meetings in sync.</p>
+            <h2 class="section-headline">Works with your stack</h2>
+            <p class="integrations-subtext">Thread integrates with your CRM, CS tools, and product stack. We don't replace your tools—we make them work.</p>
             <div class="integrations-grid">
                 <div class="integration-item">
                     <div class="integration-icon">SF</div>
@@ -297,56 +568,41 @@
                     <div class="integration-name">HubSpot</div>
                 </div>
                 <div class="integration-item">
-                    <div class="integration-icon">ZD</div>
-                    <div class="integration-name">Zendesk</div>
+                    <div class="integration-icon">GW</div>
+                    <div class="integration-name">Google Workspace</div>
                 </div>
                 <div class="integration-item">
-                    <div class="integration-icon">IC</div>
-                    <div class="integration-name">Intercom</div>
+                    <div class="integration-icon">A0</div>
+                    <div class="integration-name">Auth0</div>
                 </div>
                 <div class="integration-item">
-                    <div class="integration-icon">MP</div>
-                    <div class="integration-name">Mixpanel</div>
-                </div>
-                <div class="integration-item">
-                    <div class="integration-icon">AM</div>
-                    <div class="integration-name">Amplitude</div>
-                </div>
-                <div class="integration-item">
-                    <div class="integration-icon">SF</div>
-                    <div class="integration-name">Snowflake</div>
-                </div>
-                <div class="integration-item">
-                    <div class="integration-icon">BQ</div>
-                    <div class="integration-name">BigQuery</div>
+                    <div class="integration-icon">N</div>
+                    <div class="integration-name">Notion</div>
                 </div>
                 <div class="integration-item">
                     <div class="integration-icon">SL</div>
                     <div class="integration-name">Slack</div>
                 </div>
-                <div class="integration-item">
-                    <div class="integration-icon">📅</div>
-                    <div class="integration-name">Calendars</div>
+                <div class="integration-item coming-soon">
+                    <div class="integration-icon">ZO</div>
+                    <div class="integration-name">Zoom</div>
+                    <div class="coming-soon-badge">Coming soon</div>
                 </div>
-                <div class="integration-item">
-                    <div class="integration-icon">✉️</div>
-                    <div class="integration-name">Email</div>
+                <div class="integration-item coming-soon">
+                    <div class="integration-icon">GM</div>
+                    <div class="integration-name">Google Meet</div>
+                    <div class="coming-soon-badge">Coming soon</div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Long Form Explainer Section -->
-    <section class="explainer-section">
-        <div class="container">
-            <h2 class="section-headline">You cannot scale Customer Success without the right systems</h2>
-            <div class="explainer-content">
-                <p class="explainer-text">
-                    Customer Success is drowning in scattered data, manual prep, inconsistent workflows, and reactive firefighting. Thread changes that by bringing all your customer signals into one place and turning them into real time actions your CSMs can use to drive adoption, build relationships, and execute renewals with confidence.
-                </p>
-                <p class="explainer-text highlight">
-                    This is not another dashboard. This is the operating system for Customer Success.
-                </p>
+                <div class="integration-item coming-soon">
+                    <div class="integration-icon">MT</div>
+                    <div class="integration-name">Microsoft Teams</div>
+                    <div class="coming-soon-badge">Coming soon</div>
+                </div>
+                <div class="integration-item coming-soon">
+                    <div class="integration-icon">SN</div>
+                    <div class="integration-name">ServiceNow</div>
+                    <div class="coming-soon-badge">Coming soon</div>
+                </div>
             </div>
         </div>
     </section>
@@ -354,38 +610,72 @@
     <!-- Pricing Section -->
     <section id="pricing" class="pricing-section">
         <div class="container">
-            <h2 class="section-headline">Flexible pricing built for Customer Success teams</h2>
+            <h2 class="section-headline">Pricing</h2>
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <h3>Professional</h3>
-                    <div class="pricing-features">
-                        <div class="feature-item">Core meeting intelligence</div>
-                        <div class="feature-item">QBR builder</div>
-                        <div class="feature-item">Call briefs</div>
-                        <div class="feature-item">CRM sync</div>
+                    <h3>Starter</h3>
+                    <p class="pricing-subtitle">For SMB / early CS teams</p>
+                    <div class="pricing-price">
+                        <span class="price-amount">$5,000</span>
+                        <span class="price-period">per year</span>
                     </div>
-                    <a href="#demo" class="btn-secondary">Learn more</a>
+                    <div class="pricing-features">
+                        <div class="feature-item">Up to 25 active onboardings / year</div>
+                        <div class="feature-item">Core handoff automation</div>
+                        <div class="feature-item">Context capture (seller, contract, transcripts)</div>
+                        <div class="feature-item">Customer portal</div>
+                        <div class="feature-item">Manual provisioning or limited integrations</div>
+                    </div>
+                    <a href="#" class="btn-secondary" onclick="openCalendlyModal(); return false;">Get started</a>
                 </div>
                 <div class="pricing-card featured">
                     <div class="popular-badge">Most Popular</div>
                     <h3>Growth</h3>
-                    <div class="pricing-features">
-                        <div class="feature-item">Full health scoring</div>
-                        <div class="feature-item">Success Hub</div>
-                        <div class="feature-item">Adoption analytics</div>
-                        <div class="feature-item">Renewal workflows</div>
+                    <p class="pricing-subtitle">For mid-market SaaS</p>
+                    <div class="pricing-price">
+                        <span class="price-amount">$15,000</span>
+                        <span class="price-period">per year</span>
                     </div>
-                    <a href="#demo" class="btn-primary">Get started</a>
+                    <div class="pricing-features">
+                        <div class="feature-item">Up to 100 active onboardings / year</div>
+                        <div class="feature-item">Everything in Starter</div>
+                        <div class="feature-item">Automated implementation / provisioning</div>
+                        <div class="feature-item">Deeper CRM + call tool integrations</div>
+                        <div class="feature-item">Custom handoff logic</div>
+                    </div>
+                    <a href="#" class="btn-primary" onclick="openCalendlyModal(); return false;">Get started</a>
                 </div>
                 <div class="pricing-card">
                     <h3>Enterprise</h3>
-                    <div class="pricing-features">
-                        <div class="feature-item">Custom data integrations</div>
-                        <div class="feature-item">Data lake ingest</div>
-                        <div class="feature-item">Advanced security</div>
-                        <div class="feature-item">Admin controls</div>
+                    <p class="pricing-subtitle">For high-ARR, complex handoffs</p>
+                    <div class="pricing-price">
+                        <span class="price-amount">Contact us</span>
                     </div>
-                    <a href="#demo" class="btn-secondary">Contact sales</a>
+                    <div class="pricing-features">
+                        <div class="feature-item">Unlimited or high-volume onboardings</div>
+                        <div class="feature-item">Custom workflows</div>
+                        <div class="feature-item">Advanced provisioning</div>
+                        <div class="feature-item">SLAs</div>
+                        <div class="feature-item">Security / compliance</div>
+                        <div class="feature-item">Dedicated support</div>
+                    </div>
+                    <a href="#demo" class="btn-secondary">Contact us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing CTA Section -->
+    <section id="demo" class="explainer-section">
+        <div class="container">
+            <div class="explainer-content" style="text-align: center;">
+                <h2 class="section-headline" style="margin-bottom: 24px;">Fix the handoff gap</h2>
+                <p class="explainer-text" style="font-size: 20px; line-height: 1.8; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    If you're losing customers to poor onboarding and misaligned expectations, the problem starts at handoff. Thread fixes that gap automatically.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" class="btn-primary" style="font-size: 18px; padding: 16px 40px;" onclick="openCalendlyModal(); return false;">Get Started</a>
+                    <a href="#" class="btn-secondary" style="font-size: 18px; padding: 16px 40px;" onclick="openCalendlyModal(); return false;">Request Demo</a>
                 </div>
             </div>
         </div>
@@ -397,20 +687,39 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="logo">Thread</div>
-                    <p>The operating system for Customer Success</p>
+                    <p>Built for the future of customer success</p>
                 </div>
                 <div class="footer-ctas">
-                    <a href="#renewals" class="btn-primary">See how Thread improves renewals</a>
-                    <a href="#demo" class="btn-secondary">Talk to our team</a>
+                    <a href="#" class="btn-primary" onclick="openCalendlyModal(); return false;">Request Demo</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Thread. All rights reserved.</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                    <p>&copy; 2025 Thread Solutions Inc. All rights reserved.</p>
+                    <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                        <a href="privacy.html" style="color: var(--text-light); text-decoration: none; font-size: 14px; transition: color 0.2s;">Privacy</a>
+                        <a href="terms.html" style="color: var(--text-light); text-decoration: none; font-size: 14px; transition: color 0.2s;">Terms</a>
+                        <a href="subprocessors.html" style="color: var(--text-light); text-decoration: none; font-size: 14px; transition: color 0.2s;">Subprocessors</a>
+                        <a href="cookie-policy.html" style="color: var(--text-light); text-decoration: none; font-size: 14px; transition: color 0.2s;">Cookies</a>
+                        <a href="data-processing-agreement.html" style="color: var(--text-light); text-decoration: none; font-size: 14px; transition: color 0.2s;">DPA</a>
+                        <a href="compliance-report.html" style="color: var(--text-light); text-decoration: none; font-size: 14px; transition: color 0.2s;">Compliance</a>
+                        <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer" style="color: var(--text-light); text-decoration: none; font-size: 14px; transition: color 0.2s;">Sign In</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Calendly Modal -->
+    <div id="calendly-modal" class="calendly-modal">
+        <div class="calendly-modal-overlay"></div>
+        <div class="calendly-modal-content">
+            <button class="calendly-modal-close" id="calendly-modal-close">&times;</button>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/justin-thread/30min" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
-

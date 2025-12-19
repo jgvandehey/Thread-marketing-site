@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Processing Agreement - Thread</title>
+    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Load Delve first -->
+    <script src="https://cdn.delve.co/src/delve-cookie-consent-default.js"></script>
+
+    <!-- Load Google Analytics early (for consent mode pings) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJW5L0WQVW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-RJW5L0WQVW');
+    </script>
+    <script>
+      // Set up Google Consent Mode defaults
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+
+      gtag('consent', 'default', {
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        ad_storage: 'denied',
+        analytics_storage: 'denied'
+      });
+
+      // Initialize GA (no cookies until consent)
+      gtag('js', new Date());
+      gtag('config', 'G-RJW5L0WQVW', { send_page_view: false });
+    </script>
+
+    <script>
+      DelveCookieConsent.init({
+        message: "We use cookies to enhance your experience and analyze our traffic.",
+        acceptText: "Accept all cookies",
+        rejectText: "Reject non-essential",
+        settingsText: "Cookie preferences",
+        privacyPolicyUrl: "https://www.thread.app/privacy-policy",
+        manageScriptTags: true,
+        ccpaEnabled: false,
+        showInNonRegulatedRegions: true, // allow GA in non-regulated regions
+
+        categories: {
+          necessary: {
+            name: 'Necessary',
+            description: 'Essential cookies required for the website to function.',
+            required: true,
+            enabled: true
+          },
+          analytics: {
+            name: 'Analytics',
+            description: 'Help us understand how visitors use our website.',
+            enabled: false,
+            services: {
+              google_analytics: {
+                label: 'Google Analytics',
+                enabled: true,
+                onAccept: () => {
+                  // Update consent to grant analytics and ads
+                  gtag('consent', 'update', {
+                    analytics_storage: 'granted',
+                    ad_user_data: 'granted',
+                    ad_personalization: 'granted',
+                    ad_storage: 'granted'
+                  });
+
+                  // Send initial page_view now that consent is granted
+                  gtag('event', 'page_view');
+                }
+              }
+            }
+          },
+          marketing: {
+            name: 'Marketing',
+            description: 'Used to track visitors and show ads.',
+            enabled: false,
+            services: {
+              facebook_pixel: {
+                label: 'Facebook Pixel',
+                enabled: true,
+                onAccept: () => {
+                  // Load Facebook Pixel after consent
+                  !window.fbq && (function(f,b,e,v,n,t,s){
+                    if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                    n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+                    s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+                  })(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+                  fbq('init', 'YOUR_PIXEL_ID');
+                  fbq('consent', 'grant');
+                }
+              }
+            }
+          }
+        },
+
+        onAccept: (cats) => console.log('Accepted:', cats),
+        onReject: () => {
+          // Keep everything denied
+          gtag('consent', 'update', {
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            ad_storage: 'denied',
+            analytics_storage: 'denied'
+          });
+          console.log('Non-essential cookies rejected');
+        }
+      });
+    </script>
+
+    <style>
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-font-smoothing: antialiased;
+      -o-font-smoothing: antialiased;
+    }
+    .delve-cookie-banner {
+      z-index: 999999 !important;
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">Thread</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#pricing">Pricing</a>
+                    <a href="index.html#demo" class="btn-primary-nav">Request Demo</a>
+                    <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 8px 16px; font-size: 14px;">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Legal Content -->
+    <section class="post-content" style="padding-top: 160px;">
+        <div class="container">
+            <div class="post-header" style="text-align: left; max-width: 900px; margin: 0 auto 60px;">
+                <h1>Data Processing Agreement</h1>
+                <p style="color: var(--text-light); font-size: 16px;">Current as of September 2, 2025</p>
+            </div>
+            <div class="post-body" style="max-width: 900px; margin: 0 auto;">
+                <div class="post-body-content">
+                    <p>This Data Processing Agreement ("Agreement") will form part of the Service Agreement between Thread Solutions Inc. ("Data Processor"), located at 18040 Upper Midhill Drive, West Linn, OR 97068, and the customer entity that accepts this Agreement ("Company" or "Data Controller").</p>
+
+                    <p>By using Thread's services, the Company agrees to be bound by the terms of this Data Processing Agreement.</p>
+
+                    <p>For questions regarding this Data Processing Agreement or to exercise any rights hereunder, please contact <a href="mailto:team@thread.app">team@thread.app</a>.</p>
+
+                    <h2>WHEREAS</h2>
+
+                    <p>(A) The Company acts as a Data Controller.</p>
+
+                    <p>(B) The Company wishes to subcontract certain Services, which imply the processing of personal data, to the Data Processor.</p>
+
+                    <p>(C) The Parties seek to implement a data processing agreement that complies with the requirements of the current legal framework in relation to data processing and with the Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation).</p>
+
+                    <p>(D) The Parties wish to lay down their rights and obligations.</p>
+
+                    <h2>IT IS AGREED AS FOLLOWS</h2>
+
+                    <h3>1. Definitions and Interpretation</h3>
+
+                    <p>Unless otherwise defined herein, capitalized terms and expressions used in this Agreement shall have the following meaning:</p>
+
+                    <p>(a) "Agreement" means this Data Processing Agreement and all Schedules.</p>
+
+                    <p>(b) "Company Personal Data" means any Personal Data Processed by a Contracted Processor on behalf of Company pursuant to or in connection with the Principal Agreement.</p>
+
+                    <p>(c) "Contracted Processor" means a Subprocessor.</p>
+
+                    <p>(d) "Data Protection Laws" means EU Data Protection Laws and, to the extent applicable, the data protection or privacy laws of any other country.</p>
+
+                    <p>(e) "EEA" means the European Economic Area.</p>
+
+                    <p>(f) "EU Data Protection Laws" means EU Directive 95/46/EC, as transposed into domestic legislation of each Member State and as amended, replaced or superseded from time to time, including by the GDPR and laws implementing or supplementing the GDPR.</p>
+
+                    <p>(g) "GDPR" means EU General Data Protection Regulation 2016/679.</p>
+
+                    <p>(h) "Data Transfer" means:</p>
+                    <ul>
+                        <li>i. a transfer of Company Personal Data from the Company to a Contracted Processor; or</li>
+                        <li>ii. an onward transfer of Company Personal Data from a Contracted Processor to a Subcontracted Processor, or between two establishments of a Contracted Processor, in each case, where such transfer would be prohibited by Data Protection Laws (or by the terms of data transfer agreements put in place to address the data transfer restrictions of Data Protection Laws).</li>
+                    </ul>
+
+                    <p>(i) "Services" means the AI-powered sales execution services provided by the Data Processor, including call recording and transcription, real-time sales intelligence, workflow automation, CRM and third-party integrations, and analytics and reporting tools that assist sales teams before, during, and after customer interactions.</p>
+
+                    <p>(j) "Subprocessor" means any person appointed by or on behalf of Processor to process Personal Data on behalf of the Company in connection with the Agreement.</p>
+
+                    <p>The terms "Commission", "Controller", "Data Subject", "Member State", "Personal Data", "Personal Data Breach", "Processing" and "Supervisory Authority" shall have the same meaning as in the GDPR, and their cognate terms shall be construed accordingly.</p>
+
+                    <h3>2. Processing of Company Personal Data</h3>
+
+                    <p>Processor shall:</p>
+                    <ul>
+                        <li>(a) comply with all applicable Data Protection Laws in the Processing of Company Personal Data; and</li>
+                        <li>(b) not Process Company Personal Data other than on the relevant Company's documented instructions.</li>
+                    </ul>
+
+                    <p>The Company instructs Processor to process Company Personal Data.</p>
+
+                    <p>The subject matter, duration, nature and purpose of Processing, the type of Personal Data, and categories of Data Subjects are further specified in Schedule 1 to this Agreement.</p>
+
+                    <h3>3. Processor Personnel</h3>
+
+                    <p>Processor shall take reasonable steps to ensure the reliability of any employee, agent or contractor of any Contracted Processor who may have access to the Company Personal Data, ensuring in each case that access is strictly limited to those individuals who need to know / access the relevant Company Personal Data, as strictly necessary for the purposes of the Principal Agreement, and to comply with Applicable Laws in the context of that individual's duties to the Contracted Processor, ensuring that all such individuals are subject to confidentiality undertakings or professional or statutory obligations of confidentiality.</p>
+
+                    <h3>4. Security</h3>
+
+                    <p>Taking into account the state of the art, the costs of implementation and the nature, scope, context and purposes of Processing as well as the risk of varying likelihood and severity for the rights and freedoms of natural persons, Processor shall in relation to the Company Personal Data implement appropriate technical and organisational measures to ensure a level of security appropriate to that risk, including, as appropriate, the measures referred to in Article 32(1) of the GDPR.</p>
+
+                    <p>In assessing the appropriate level of security, Processor shall take account in particular of the risks that are presented by Processing, in particular from a Personal Data Breach.</p>
+
+                    <h3>5. Subprocessing</h3>
+
+                    <p>Processor shall not engage any Subprocessor to Process Company Personal Data unless:</p>
+                    <ul>
+                        <li>(a) Processor maintains an up-to-date list of authorized Subprocessors, which is available at <a href="https://www.thread.app/subprocessors" target="_blank" rel="noopener noreferrer">https://www.thread.app/subprocessors</a>;</li>
+                        <li>(b) Processor provides the Company with at least 14 days' prior written notice of any intended changes concerning the addition or replacement of Subprocessors, including details of the new Subprocessor's name, location, and the Processing activities it will perform;</li>
+                        <li>(c) the Company may reasonably object to such changes on legitimate data protection grounds within 10 days of receiving notice; and</li>
+                        <li>(d) Processor enters into a written agreement with each Subprocessor that imposes data protection obligations no less protective than those imposed on the Processor under this Agreement, including but not limited to equivalent obligations regarding security measures, data subject rights assistance, breach notification, audits, and data deletion/return. The Processor shall remain fully liable to the Company for the performance of any Subprocessor's obligations.</li>
+                    </ul>
+
+                    <p>The Company hereby authorizes the Processor to engage the Subprocessors listed at <a href="https://www.thread.app/subprocessors" target="_blank" rel="noopener noreferrer">https://www.thread.app/subprocessors</a> as of the effective date of this Agreement, subject to the Company's right to object as set out above. If the Company does not object within 14 days of the effective date, such Subprocessors shall be deemed authorized.</p>
+
+                    <p>In the event of an objection by the Company that cannot be resolved, the Processor shall either not appoint the Subprocessor or permit the Company to terminate the Principal Agreement without liability.</p>
+
+                    <h3>6. Data Subject Rights</h3>
+
+                    <p>Taking into account the nature of the Processing, Processor shall assist the Company by implementing appropriate technical and organisational measures, insofar as this is possible, for the fulfilment of the Company obligations, as reasonably understood by Company, to respond to requests to exercise Data Subject rights under the Data Protection Laws.</p>
+
+                    <p>Processor shall:</p>
+                    <ul>
+                        <li>(a) promptly notify Company if it receives a request from a Data Subject under any Data Protection Law in respect of Company Personal Data; and</li>
+                        <li>(b) ensure that it does not respond to that request except on the documented instructions of Company or as required by Applicable Laws to which the Processor is subject, in which case Processor shall to the extent permitted by Applicable Laws inform Company of that legal requirement before the Contracted Processor responds to the request.</li>
+                    </ul>
+
+                    <h3>7. Personal Data Breach</h3>
+
+                    <p>Processor shall notify Company without undue delay upon Processor becoming aware of a Personal Data Breach affecting Company Personal Data, providing Company with sufficient information to allow the Company to meet any obligations to report or inform Data Subjects of the Personal Data Breach under the Data Protection Laws.</p>
+
+                    <p>Processor shall co-operate with the Company and take reasonable commercial steps as are directed by Company to assist in the investigation, mitigation and remediation of each such Personal Data Breach.</p>
+
+                    <h3>8. Data Protection Impact Assessment and Prior Consultation</h3>
+
+                    <p>Processor shall provide reasonable assistance to the Company with any data protection impact assessments, and prior consultations with Supervising Authorities or other competent data privacy authorities, which Company reasonably considers to be required by article 35 or 36 of the GDPR or equivalent provisions of any other Data Protection Law, in each case solely in relation to Processing of Company Personal Data by, and taking into account the nature of the Processing and information available to, the Contracted Processors.</p>
+
+                    <h3>9. Deletion or Return of Company Personal Data</h3>
+
+                    <p>Subject to this section Processor shall promptly and in any event within 10 business days of the date of cessation of any Services involving the Processing of Company Personal Data (the "Cessation Date"), delete and procure the deletion of all copies of those Company Personal Data, except to the extent that the Processor is required by Applicable Laws to retain any Company Personal Data, in which case the Processor shall securely isolate such data and cease all further Processing except as required by law.</p>
+
+                    <p>Processor shall provide written certification to Company that it has fully complied with this section within 10 business days of the Cessation Date.</p>
+
+                    <h3>10. Audit Rights</h3>
+
+                    <p>Subject to this section, Processor shall make available to the Company on request all information necessary to demonstrate compliance with this Agreement, and shall allow for and contribute to audits, including inspections, by the Company or an auditor mandated by the Company in relation to the Processing of the Company Personal Data by the Contracted Processors.</p>
+
+                    <p>Information and audit rights of the Company only arise under this section to the extent that the Agreement does not otherwise give them information and audit rights meeting the relevant requirements of Data Protection Law.</p>
+
+                    <h3>11. Data Transfer</h3>
+
+                    <p>The Processor shall ensure that any transfer of Company Personal Data to countries outside the EU and/or the European Economic Area (EEA) complies with Data Protection Laws. Where such transfers occur, the Processor shall implement appropriate safeguards, such as EU-approved standard contractual clauses or other approved mechanisms, and shall inform the Company of such safeguards upon request. Where Subprocessors are located outside the EEA, the Processor shall ensure that equivalent safeguards are in place.</p>
+
+                    <h3>12. General Terms</h3>
+
+                    <p><strong>Confidentiality.</strong> Each Party must keep this Agreement and information it receives about the other Party and its business in connection with this Agreement ("Confidential Information") confidential and must not use or disclose that Confidential Information without the prior written consent of the other Party except to the extent that:</p>
+                    <ul>
+                        <li>(a) disclosure is required by law;</li>
+                        <li>(b) the relevant information is already in the public domain.</li>
+                    </ul>
+
+                    <p><strong>Notices.</strong> All notices and communications given under this Agreement must be in writing and will be delivered personally, sent by post or sent by email to the address or email address set out in the heading of this Agreement at such other address as notified from time to time by the Parties changing address.</p>
+
+                    <h3>13. Governing Law and Jurisdiction</h3>
+
+                    <p>This Agreement is governed by the laws of California, USA, including the California Consumer Privacy Act (CCPA), as amended by the California Privacy Rights Act (CPRA). Notwithstanding the foregoing, for matters relating to the protection of Personal Data subject to the GDPR, the obligations under this Agreement shall be interpreted and enforced in accordance with the GDPR and applicable EU Data Protection Laws, which shall take precedence over any conflicting provisions of California law.</p>
+
+                    <p>Any dispute arising in connection with this Agreement, which the Parties will not be able to resolve amicably, will be submitted to the exclusive jurisdiction of the courts located in San Francisco County, California, USA.</p>
+
+                    <h2>Schedule 1: Details of the Processing of Company Personal Data</h2>
+
+                    <h3>1. Subject Matter and Duration of the Processing</h3>
+
+                    <p>The subject matter of the Processing is the performance of the Services pursuant to the Principal Agreement. The duration of the Processing shall be for the term of the Principal Agreement, plus any period required for the deletion or return of data as set out in Section 9 of this Agreement, typically not exceeding 1 year after the customer relationship ends, unless required by law.</p>
+
+                    <h3>2. Nature of the Processing</h3>
+
+                    <p>The Processing involves the collection, storage, analysis, and sharing of Personal Data to support an AI-powered sales platform. Activities include recording and transcribing sales calls, analyzing communication data, generating insights, automating workflows, integrating with third-party services, and sharing curated content via secure digital platforms.</p>
+
+                    <h3>3. Purpose of the Processing</h3>
+
+                    <p>The Processing aims to enhance sales effectiveness by providing AI-driven intelligence throughout the sales lifecycle, including pre-meeting preparation, real-time meeting assistance, post-meeting follow-ups, and analytics to improve sales outcomes and streamline workflows.</p>
+
+                    <h3>4. Types of Personal Data</h3>
+
+                    <ul>
+                        <li><strong>Identifiers and Contact Information:</strong> Names, email addresses, phone numbers, job titles.</li>
+                        <li><strong>Professional and Organizational Data:</strong> Company names, stakeholder details, deal metadata.</li>
+                        <li><strong>Communication Content:</strong> Email content, calendar event details, call transcripts, audio/video recordings.</li>
+                        <li><strong>Behavioral and Interaction Data:</strong> Engagement history, activity logs, conversation patterns.</li>
+                        <li><strong>Technical and Authentication Data:</strong> Authentication tokens, IP addresses, session IDs.</li>
+                        <li><strong>Inferred or Derived Data:</strong> AI-generated insights and document embeddings.</li>
+                        <li><strong>Media and Files:</strong> Documents, slides, recordings.</li>
+                    </ul>
+
+                    <p>No special categories of Personal Data under GDPR Article 9 are processed.</p>
+
+                    <h3>5. Categories of Data Subjects</h3>
+
+                    <ul>
+                        <li><strong>Internal Data Subjects:</strong> Sellers, users, and employees of the Company.</li>
+                        <li><strong>External Data Subjects:</strong> Buyers, deal contacts, and participants in digital sales platforms.</li>
+                        <li><strong>Organizational Data Subjects:</strong> Stakeholders from enterprise domains involved in sales processes.</li>
+                    </ul>
+
+                    <h3>6. Scope and Context of Processing</h3>
+
+                    <ul>
+                        <li><strong>Volume:</strong> Varies by deal, potentially affecting thousands of data subjects in enterprise use.</li>
+                        <li><strong>Frequency:</strong> Real-time during calls, asynchronous post-call, and on-demand for specific tasks.</li>
+                        <li><strong>Organizational:</strong> Multi-tenant SaaS platform with role-based access and enterprise isolation.</li>
+                        <li><strong>Technological:</strong> Cloud-based infrastructure with integrations to external services and AI processing.</li>
+                        <li><strong>Geographic:</strong> Global user base with potential cross-border data transfers.</li>
+                    </ul>
+
+                    <p style="margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border-color);"><strong>By using Thread's services, the Company agrees to be bound by the terms of this Data Processing Agreement.</strong></p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border-color);">
+                <a href="index.html" class="btn-secondary">← Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">Thread</div>
+                    <p>Built for the future of customer success</p>
+                </div>
+                <div class="footer-ctas">
+                    <a href="index.html#demo" class="btn-primary">Request Demo</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                    <p>&copy; 2025 Thread Solutions Inc. All rights reserved.</p>
+                    <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                        <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Privacy</a>
+                        <a href="terms.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Terms</a>
+                        <a href="subprocessors.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Subprocessors</a>
+                        <a href="cookie-policy.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Cookies</a>
+                        <a href="data-processing-agreement.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">DPA</a>
+                        <a href="compliance-report.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Compliance</a>
+                        <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

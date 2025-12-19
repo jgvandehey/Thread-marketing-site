@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Thread</title>
+    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Load Delve first -->
+    <script src="https://cdn.delve.co/src/delve-cookie-consent-default.js"></script>
+
+    <!-- Load Google Analytics early (for consent mode pings) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJW5L0WQVW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-RJW5L0WQVW');
+    </script>
+    <script>
+      // Set up Google Consent Mode defaults
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+
+      gtag('consent', 'default', {
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        ad_storage: 'denied',
+        analytics_storage: 'denied'
+      });
+
+      // Initialize GA (no cookies until consent)
+      gtag('js', new Date());
+      gtag('config', 'G-RJW5L0WQVW', { send_page_view: false });
+    </script>
+
+    <script>
+      DelveCookieConsent.init({
+        message: "We use cookies to enhance your experience and analyze our traffic.",
+        acceptText: "Accept all cookies",
+        rejectText: "Reject non-essential",
+        settingsText: "Cookie preferences",
+        privacyPolicyUrl: "https://www.thread.app/privacy-policy",
+        manageScriptTags: true,
+        ccpaEnabled: false,
+        showInNonRegulatedRegions: true, // allow GA in non-regulated regions
+
+        categories: {
+          necessary: {
+            name: 'Necessary',
+            description: 'Essential cookies required for the website to function.',
+            required: true,
+            enabled: true
+          },
+          analytics: {
+            name: 'Analytics',
+            description: 'Help us understand how visitors use our website.',
+            enabled: false,
+            services: {
+              google_analytics: {
+                label: 'Google Analytics',
+                enabled: true,
+                onAccept: () => {
+                  // Update consent to grant analytics and ads
+                  gtag('consent', 'update', {
+                    analytics_storage: 'granted',
+                    ad_user_data: 'granted',
+                    ad_personalization: 'granted',
+                    ad_storage: 'granted'
+                  });
+
+                  // Send initial page_view now that consent is granted
+                  gtag('event', 'page_view');
+                }
+              }
+            }
+          },
+          marketing: {
+            name: 'Marketing',
+            description: 'Used to track visitors and show ads.',
+            enabled: false,
+            services: {
+              facebook_pixel: {
+                label: 'Facebook Pixel',
+                enabled: true,
+                onAccept: () => {
+                  // Load Facebook Pixel after consent
+                  !window.fbq && (function(f,b,e,v,n,t,s){
+                    if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                    n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+                    s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+                  })(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+                  fbq('init', 'YOUR_PIXEL_ID');
+                  fbq('consent', 'grant');
+                }
+              }
+            }
+          }
+        },
+
+        onAccept: (cats) => console.log('Accepted:', cats),
+        onReject: () => {
+          // Keep everything denied
+          gtag('consent', 'update', {
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            ad_storage: 'denied',
+            analytics_storage: 'denied'
+          });
+          console.log('Non-essential cookies rejected');
+        }
+      });
+    </script>
+
+    <style>
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-font-smoothing: antialiased;
+      -o-font-smoothing: antialiased;
+    }
+    .delve-cookie-banner {
+      z-index: 999999 !important;
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">Thread</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#pricing">Pricing</a>
+                    <a href="index.html#demo" class="btn-primary-nav">Request Demo</a>
+                    <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 8px 16px; font-size: 14px;">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Legal Content -->
+    <section class="post-content" style="padding-top: 160px;">
+        <div class="container">
+            <div class="post-header" style="text-align: left; max-width: 900px; margin: 0 auto 60px;">
+                <h1>Thread Solutions Inc. (dba Thread) Terms of Service</h1>
+                <p style="color: var(--text-light); font-size: 16px;">Effective Date: March 6, 2024</p>
+            </div>
+            <div class="post-body" style="max-width: 900px; margin: 0 auto;">
+                <div class="post-body-content">
+                    <p>Welcome to Thread! Please read these Terms of Service (these "Terms") and our Privacy Policy carefully because they govern your use of our web sites and the Thread service (which we collectively call the "Service").</p>
+
+                    <h2>Agreement to Terms</h2>
+
+                    <p>These Terms, including the mandatory arbitration provisions, are a contract between our Customer and aSaaSins LLC, the provider of the Service (which we refer to in these Terms as "Thread," "we" or "us"). Our "Customer" is either (i) the initial individual subscriber for the Service who invites other individuals to join the initial subscriber's group to use the Service, where that group of individuals is not part of the same business or organization, or (ii) a business or organization, where an individual initiates a subscription for the Service on behalf of that business or organization, providing an email address using the domain of such business or organization. When we refer to "you" in these Terms, we are referring to the Customer. We understand that certain Customers are subject to unique legal requirements due to their status or use of the Service. Accordingly, certain Customers, such as government agencies, will find additional Applicable Customer Terms set out below, which are deemed to be incorporated in these Terms where applicable.</p>
+
+                    <p>The individual who initiates a subscription for a Customer is considered the "Administrator" for the Customer. The Customer may elect to change the Administrator(s) from time to time. The Administrator and other individual(s) using the Service under a Customer's subscription are referred to in these Terms as a "User" or "Users." The initial Administrator represents and warrants to us, on behalf of the Customer, that such Administrator has the authority to bind the Customer to these Terms. By using the Service, the Customer acknowledges and agrees that it shall be legally bound by these Terms. The Administrator shall ensure that all Users are notified of these Terms, including the User Guidelines set forth below. If the Customer does not agree to be bound to these Terms as a legal contract, the Customer must terminate its subscription and ensure that its Users cease use of the Service.</p>
+
+                    <p>By using the Service, the Customer and all of its Users also acknowledge and accept the provisions of our Privacy Policy, which describes the information we obtain from you and your Users, and how we use it.</p>
+
+                    <h2>Modification of these Terms</h2>
+
+                    <p>We may modify these Terms at any time, in our sole discretion, as new features, technology, or legal requirements arise, so please check back from time to time. You may always determine if the Terms have changed by checking the Effective Date at the top of these Terms. If we make a significant change, we'll notify you and, where required, seek your consent. If we update these Terms, you are free to decide whether to accept the updated terms or to stop using the Service; your continued use of the Service after the effectiveness of that update will be deemed to represent your agreement with, and consent to be bound by, the new Terms. See Cancellation of a Service Subscription for instructions on how to cancel your subscription. Except for changes made by us as described here, no other amendment or modification of these Terms shall be effective unless set forth in a written agreement expressly amending these Terms and bearing a written signature by you and us. For clarity, email or other communications will not constitute an effective written agreement for this purpose.</p>
+
+                    <h2>Accessing the Service</h2>
+
+                    <p>The Administrator has certain responsibilities on behalf of a Customer.</p>
+
+                    <h3>Obtaining a Subscription</h3>
+
+                    <p>The Administrator must obtain and maintain a subscription for the Customer and its Users to access and use the Service. A subscription may be procured through one of several alternatives: (i) through the Thread website, (ii) by completing and submitting to us an Order Form, or (iii) through your account with an integrated third-party service, such as Zoom, Google Workspace, Slack or Microsoft Teams (a "Third Party Service"). If you select one of the first two methods, the Administrator shall provide us with an email address and other information we require to establish a Customer subscription. If you choose the Third Party Service option, we'll create the Customer account by extracting from your Third Party Service certain information regarding you and your Users, such as name, email address and other information that the privacy settings on the Third Party Service permit us to obtain. We refer to this information we obtain from you and/or a Third Party Service as "Customer Information." Please contact us at <a href="mailto:support@Thread.cam">support@Thread.cam</a> for more information.</p>
+
+                    <p>You must ensure that the Customer Information is accurate and complete, and is updated in a timely manner when necessary. If the Customer Information is incorrect, we may not be able to contact you, and we reserve the right to suspend or terminate your subscription. If we provide the Administrator with a password for a Customer administrator account, it is the Customer's responsibility to establish and maintain security for such password. We reserve the right to not provide the Customer's password to anyone unless we are satisfied, in our sole discretion, that the individual requesting the password is authorized by the Customer. You must notify us immediately of any unauthorized access to or use of your password, or the Service. You are responsible for all activities that occur under your subscription, whether or not you know about or authorize them.</p>
+
+                    <p>A Customer subscription is completed when we accept the Customer request and make the Service available to the Customer and its Users, and shall remain in effect for the period of time specified in the Customer account settings or in the Order Form, as applicable, or until any earlier termination according to these Terms. You may be eligible to use the Service for an initial free trial subscription before purchasing a subscription. Please see our Pricing Page for information regarding subscription pricing.</p>
+
+                    <h3>Eligibility</h3>
+
+                    <p>The Administrator shall ensure that all Users are 18 years or older, and are authorized by the Customer to use the Service. The Service is not directed to minors, and we rely on Administrators to ensure minors do not use the Service. We do not knowingly collect personal information from minors and, if we learn that we have inadvertently obtained information in violation of applicable laws prohibiting collection of information from minors, we will promptly delete it.</p>
+
+                    <h3>Compliance</h3>
+
+                    <p>It is the Administrator's obligation to ensure that all Users comply with our User Guidelines. In addition, the Administrator shall ensure that all Users comply with the Customer's policies and legal obligations, as we do not assume any responsibility for actions taken, or omissions by, Users when using the Service.</p>
+
+                    <h3>Payments</h3>
+
+                    <p>All subscriptions other than a free trial must be paid for in advance, and the Administrator shall ensure the Customer pays the amount we specify for the applicable level of Service at our Pricing Page at the time of the initial subscription and each renewal, or as accepted by us in an Order Form. The Administrator shall also ensure the Customer complies with our Commercial Terms.</p>
+
+                    <h2>Providing the Service to You</h2>
+
+                    <h3>Availability</h3>
+
+                    <p>Thread will endeavor to make the Service available 24 hours a day, 7 days a week, excluding such periods when the Service may be unavailable due to necessary maintenance, updates or other factors, and unanticipated downtime. We anticipate that Service unavailability will be infrequent and of very limited duration and should we know that there will be any extended unavailability, we will use reasonable efforts to provide advance notice to you. However, Thread does not offer any guaranty or warranty that the Service will be available at all times, or that it will continue to be offered indefinitely.</p>
+
+                    <h3>Working with Third Parties</h3>
+
+                    <p>Thread utilizes various skilled third-parties ("Service Providers") to provide technical or other services relating to all or part of our fulfillment of the Service, and you hereby agree that such involvement by these Service Providers is acceptable. Please see our Privacy Policy to understand the extent to which any third-party may have access to Customer Data.</p>
+
+                    <h3>Modifications</h3>
+
+                    <p>We retain the right, in our sole discretion, to modify the Service at any time, with or without notice, including modifications that may affect the previous mode of operation of the Service or an integration with a Third Party Service. We expect that any such modifications will enhance the overall Service, but it is possible that you may not agree with us. For example, if you use a certain level of the Service, we may create a new tier of the Service, or an additional feature which would only be available if you subscribe for such other tier or feature. We also reserve the right to change the Customer Information we require from you to maintain your subscription or utilize certain features of the Service.</p>
+
+                    <h3>Support and Updates</h3>
+
+                    <p>While we expect to provide updates and other modifications to the Service from time to time, and guidance on how to use the Service as it may be updated, we shall not have any obligation to provide specific support to you with respect to the use or modifications of the Service.</p>
+
+                    <p>We may share information about future enhancements or other changes to the Service, but you should not rely upon them when deciding to subscribe. Your decision to subscribe should be based upon the functionality available when you are making that decision, and not on the potential future functionality.</p>
+
+                    <h2>Term and Termination</h2>
+
+                    <p>The term of your subscription and rights to use the Service will terminate on the earlier of (i) notice of termination by Thread to you, or you to Thread, at any time. If Thread terminates your right to use the Service prior to the end of the then-current subscription term without cause (i.e., you, including your Administrator and Users, are not in violation of these Terms), Thread shall refund the applicable pro rata portion of any fees paid by you for the portion of the subscription term after the date of termination. In all other circumstances, including termination by Thread on account of any violation of these Terms, the termination of the right to use the Service shall not require any refund of subscription fees paid to Thread.</p>
+
+                    <p>If we believe that there is a violation of these Terms that may be remedied by Customer's removal of a portion of Customer Data or Customer's disabling of any non-Thread product or tool, we may ask Customer to resolve the problem. However, we reserve the right to take what we determine to be appropriate action where Customer does not promptly remediate the problem, or if we believe there is a risk of harm to us, the Service, users, or any third party, or we believe we have a legal obligation to act.</p>
+
+                    <h2>Ownership of the Service</h2>
+
+                    <p>Subject to Customer's ownership of Customer Data (defined below), Thread and its licensors exclusively own all right, title and interest in and to the Service, including all images, text and other content provided or made available to you by Thread within, or in conjunction with, the Service, and all associated intellectual property rights therein. You acknowledge that the Service is protected by copyright, trademark, and other laws of the United States and foreign countries. You agree not to remove, alter or obscure any copyright, trademark, service mark or other proprietary rights notices incorporated in or accompanying the Service. Thread hereby grants to you a nontransferable, nonexclusive license right to access and use the Service, and to permit your Users to access and use the Service, in accordance with these Terms, during the term of your subscription. Except for this license, Thread retains all rights, title and interests in the Service.</p>
+
+                    <h2>Customer Data</h2>
+
+                    <h3>Ownership</h3>
+
+                    <p>You permit Thread to access, process and use a variety of data when you use the Service. When you use Thread with a Third Party Service, we obtain access to the data loaded into or stored in such Third Party Service by your organization's users of such Third Party Service (collectively, the "Third Party Service Data"). When your Users communicate with our Service, or use our Service to distribute information to, or otherwise interact with, other Users, our Service stores such communications ("Service Communications"). As between Customer and Thread, Customer shall be deemed the owner of the Third Party Service Data and the Service Communications (collectively, the "Customer Data"), subject only to the Operations License expressly granted by you to us in these Terms. For more information about the Customer Data we obtain and how we use it, please see our Privacy Policy.</p>
+
+                    <p>You are solely responsible for all your Customer Data. You represent and warrant that you own all your Customer Data, or you have all rights that are necessary to grant us the Operations License under these Terms. You also represent and warrant that neither your Customer Data, nor your use and provision of your Customer Data through the Service, nor any use of your Customer Data by Thread on or through the Service will infringe, misappropriate or violate a third party's intellectual property rights, or rights of publicity or privacy, or result in the violation of any applicable law or regulation.</p>
+
+                    <h3>Grant of Operations License</h3>
+
+                    <p>In order for us to legally process Customer Data in the manner necessary to provide the Service, you must grant Thread certain rights with respect to Customer Data so that technical actions we take in operating the Service are not considered legal violations. For example, we need to be able to collect, process, transmit, store, copy and publish Customer Data in order to display it to your Users, to index certain Customer Data so the Service may prompt Users to provide other communications to Users, and to store, process and distribute Customer Data in order to provide the Service to you. Accordingly, you hereby grant Thread a non-exclusive, transferable, sublicensable, worldwide, royalty-free license to use, copy, modify, create derivative works based upon, distribute, publicly display, publicly perform and distribute your Customer Data in connection with operating and providing the Service to you, only for the purpose of providing the Service, and for no other purpose (the "Operations License"). You agree that the Operations License granted to us may be extended by us to our Service Providers to the degree necessary in order for the Service to be provided.</p>
+
+                    <h3>Protecting Customer Data</h3>
+
+                    <p>The protection of Customer Data is a top priority for us, so we have implemented and will maintain administrative, physical, and technical safeguards designed to prevent unauthorized access, use, modification, deletion and disclosure of Customer Data by our personnel. We will endeavor to only share Customer Data, in accordance with our Privacy Policy, only with third-parties that contractually agree to reasonable data practices for maintaining the confidentiality and security of Customer Data and preventing unauthorized access. However, Customer acknowledges and agrees that Customer and not Thread bears sole responsibility for adequate security, protection and backup of Customer Data in the possession or control of Customer or a Third Party Service (including Customer's and such third-parties' personnel and other representatives or agents), or when Customer chooses to use unencrypted gateways to connect to the Service.</p>
+
+                    <h2>Commercial Terms</h2>
+
+                    <h3>Pricing</h3>
+
+                    <p>Except for any free trial period, or other exception we may grant from time to time, you must pay the subscription price specified for the Service at our Pricing Page. Payment obligations are non-cancelable and, except as expressly stated in these Terms, fees paid are non-refundable. If we agree to invoice Customer, full payment must be received within thirty (30) days from the invoice date.</p>
+
+                    <p>Fees stated are exclusive of any taxes, levies, duties, or similar governmental assessments of any nature, including, for example, value-added, sales, use, or withholding taxes, assessable by any jurisdiction (collectively, "Taxes"). You will be responsible for paying all Taxes associated with your subscription, except for those taxes based on our net income.</p>
+
+                    <p>Our Service prices do not include any third-party fees you incur in connection with using the Service including, without limitation, fees charged by your Internet access provider, any wireless carrier charges for cellular or data services and any other Third Party Service with which you may use the Service; you are responsible for selecting and managing these other services, and paying the fees for such services.</p>
+
+                    <h3>Autorenewal</h3>
+
+                    <p>Unless an Order Form provides otherwise, (i) all subscriptions automatically renew (without the need to go through the Service-interface "check-out" or execute a renewal Order Form) for an additional period equal to the preceding term; and (ii) subject to any price increase (see below), the per-User pricing during any automatic renewal term will remain the same as it was during the immediately prior term. You may notify us of your desire to not automatically renew by providing us with at least thirty (30) days' notice prior to the end of the subscription term to stop the subscription from automatically renewing; if you do so, your right to use the Service shall terminate at the end of the then-current subscription term.</p>
+
+                    <h3>Payment Methods</h3>
+
+                    <p>Thread accepts certain debit and credit cards as well as other forms of cash payment and electronic transfers as acceptable payment methods for the Service (each, an "Accepted Payment Method"), subject to the procedures and rules contained in these Terms and any applicable contract with the provider of the Accepted Payment Method. Accepted Payment Methods may vary by country or by certain features of the Service and may change from time to time. When you purchase with an Accepted Payment Method, the fees for your Service will be billed on or near the date of your purchase. You agree that we may process your Accepted Payment Method on each monthly, annual or other renewal term (based on the applicable subscription term), on or near the calendar day corresponding to the commencement of your Service subscription, as applicable. See "Cancellation" below for information on how to cancel a Service subscription.</p>
+
+                    <p>In order to facilitate the charging and payment for your subscription, you agree that we have permission to retain and/or share with financial institutions and payment processing firms (including any institutions or firms we retain in the future) information regarding your purchase and your submitted payment information in order to process your payment, and to use your Customer Information to provide you with notices and disclosures relating to renewals and recurring charges. If your Service subscription began on a day not contained in a subsequent month (e.g., your service began on January 30, and there is no February 30), Thread will process your payment on or near the last day of such month. (This is what we mean by paying on an autorenewal basis.) See below for information describing what you must do to change your Accepted Payment Method.</p>
+
+                    <h3>Price Changes</h3>
+
+                    <p>We may change the price of any Service from time to time, and add new fees and charges for certain features or to reflect a change in business or legal rules, but we will provide you with advance notice of changes in recurring subscription fees. Any increase in charges for the same Service would not apply until the expiration of your then current subscription term, unless otherwise specifically provided in our notice to you, and would become effective no sooner than the next time you would be charged for that Service. If you do not agree to pay the new price or other applicable charges, you may elect not to renew the Service subscription before the price change goes into effect, which cancellation would be effective at the expiration of your then current subscription term. See "Cancellation" below for information on how to cancel your subscription.</p>
+
+                    <h3>Paying our Payment Processor</h3>
+
+                    <p>When you purchase the Service, you are granting Thread the irrevocable right and permission with respect to such purchase to provide your personal data and payment information to any third-party payment processor we contract with (such as Stripe and/or one of its financial service providers) on your behalf, and to grant such firm(s) (and/or one of their respective financial service providers) the rights to collect, use, retain, and disclose such data and information. In addition, you authorize Thread to (i) obtain and verify your identity as necessary to complete financial transactions, and (ii) determine your eligibility and authority to complete such purchase.</p>
+
+                    <p>Please note that your obligation for payment to, and relationship with, such payment processor is a contractual matter between you and such third-party; Thread is not a party to, or responsible on account of, such contract. While we select our payment processors carefully and enter into detailed agreements imposing performance obligations (including confidentiality) on them, we cannot and do not guarantee their performance. We encourage you to provide any feedback regarding any payment processor with which you do business to us, as we value and use your input in determining whether to continue or end such relationships. If you have any concerns or problems with a payment processor, please contact us at <a href="mailto:support@Thread.cam">support@Thread.cam</a> as promptly as you can.</p>
+
+                    <h3>Changes to Payment Methods and Account Information</h3>
+
+                    <p>You are responsible for ensuring that your Customer Information, including all payment information (address, debit or credit card number and expiration date), is accurate and up to date. You may change this information at any time by logging into your account through the Thread website, accessing your account page and making the changes or by contacting <a href="mailto:support@Thread.cam">support@Thread.cam</a>. If you have any difficulty making any change to the payment method, you must notify us by contacting <a href="mailto:support@Thread.cam">support@Thread.cam</a> and demonstrating to our satisfaction your authority to change the payment method used for the Service.</p>
+
+                    <p>If your credit card expires or the information is otherwise invalid, or you or another party controlling the payment method make changes to your billing account too close in time to when we charge for the Service subscription (so we cannot reasonably act on your changes prior to billing), we will probably not be aware of this, and we will bill the current charges to the card we had on record; the continuation of your Service subscription constitutes your authorization for us to do so, and you remain responsible for any uncollected amounts and any charges incurred by you or us as a result of billing to an invalid card or other payment method.</p>
+
+                    <h3>Cancellation of a Service Subscription</h3>
+
+                    <p>You may elect to cancel your subscription to the Service at any time. Except as otherwise provided in these Terms, any cancellation of the Service will be effective as of the end of the then-current subscription term. If you desire to cancel your subscription for the Service, you must notify us by contacting <a href="mailto:support@Thread.cam">support@Thread.cam</a> and demonstrating to our satisfaction that the individual requesting cancellation is authorized to cancel the Customer's subscription. If you are using the Service during any trial period without charge, and we have provided that you will be charged a subscription fee at the end of the trial period, you must cancel the Service prior to the end of the trial period in order to avoid incurring the charges for the a paid subscription for the Service.</p>
+
+                    <p>If a Customer is no longer legally capable to subscribe for the Service, any person that is the authorized legal representative for such Customer must notify <a href="mailto:support@Thread.cam">support@Thread.cam</a> and demonstrate to our satisfaction his or her authority to act on behalf of the Customer and request cancellation of the Service. We will cancel the Service subscription if we are satisfied the person has the legal authority to act and be legally responsible for such Customer and validate the details of the payment method used for such Service subscription.</p>
+
+                    <p>We may cancel any Service subscription you have purchased if you fail to pay the applicable subscription fee and any applicable Taxes in full and in a timely manner according to these Terms or any agreement with a payment processor. A failure to pay occurs in any situation where Thread has not received timely payment, including where any credit card issuer or payer bank refuses to transmit the funds that are then due, or the payment processor you have contracted with notifies us of your failure to pay. We may, in our discretion, elect not to cancel a Service subscription immediately for non-payment, in which case you will continue to be responsible for the fees due for the duration of the applicable subscription. In addition, if you fail to pay for a Service, we may elect to suspend your rights to use that Service or we may change the type of Service you have to a non-paid version of the Service, if applicable. We will endeavor to provide you notice promptly after any failure to make a payment to us in full and on time, but we are not obligated to do so.</p>
+
+                    <h3>Costs of Collection; Credit Card Chargebacks</h3>
+
+                    <p>In addition to the published fees for the Service, you agree to pay any reasonable costs we incur to collect any unpaid or past due amounts, including reasonable attorneys' fees and other associated costs. Delinquent payments will bear interest at the rate of 1% per month or the highest rate permitted under applicable law, whichever is less, from the payment due date until paid in full.</p>
+
+                    <p>If you purchase a Service subscription with a credit card and then subsequently request your credit card issuer to reverse that payment, Thread may be charged a fee. Accordingly, in order to enable you to pay fees with a credit card, you acknowledge and agree that we reserve the right to suspend your ability to use the Service until such time as you reimburse us the amount of the fee we were charged by the card issuer.</p>
+
+                    <h3>Credits and Refunds</h3>
+
+                    <p>If you feel that your opportunity to use the Service was unreasonably diminished due to any cessation or modification of the Service, you may contact Thread support by emailing <a href="mailto:support@Thread.cam">support@Thread.cam</a> to request a refund or credit towards another Thread service offering, if any. Thread is under no obligation to provide such a refund or credit, and the amount of any such refund or credit shall be determined by Thread, in its discretion. If Thread does provide you with a credit, such credit will have no monetary or exchange value, and will not be transferable or refundable, and if provided with an expiration date by which it must be applied towards another Thread service will expire and have no value after such date.</p>
+
+                    <h2>User Guidelines</h2>
+
+                    <p>You agree to ensure that Users shall not do any of the following:</p>
+
+                    <ul>
+                        <li>Post, upload, publish, submit or transmit any Customer Data that: (i) infringes, misappropriates or violates a third party's patent, copyright, trademark, trade secret, moral rights or other intellectual property rights, or rights of publicity or privacy; (ii) violates, or encourages any conduct that would violate, any applicable law or regulation or would give rise to civil liability; (iii) is fraudulent, false, misleading or deceptive; (iv) is defamatory, obscene, pornographic, vulgar or offensive; (v) promotes discrimination, bigotry, racism, hatred, harassment or harm against any individual or group; (vi) is violent or threatening or promotes violence or actions that are threatening to any person or entity; or (vii) promotes illegal or harmful activities or substances;</li>
+                        <li>Use, display, mirror or frame the Service or any individual element within the Service, Thread's name, any Thread trademark, logo or other proprietary information, or the layout and design of any page or form contained on a page, without Thread's express written consent;</li>
+                        <li>Access, tamper with, or use non-public areas of the Service, Thread's computer systems, or the technical delivery systems of Thread's providers;</li>
+                        <li>Attempt to probe, scan or test the vulnerability of any Thread system or network or breach any security or authentication measures;</li>
+                        <li>Avoid, bypass, remove, deactivate, impair, descramble or otherwise circumvent any technological measure implemented by Thread or any of Thread's providers or any other third party (including another user) to protect the Service or Customer Data;</li>
+                        <li>Attempt to access or search the Service or Customer Data or download Customer Data from the Service through the use of any engine, software, tool, agent, device or mechanism (including spiders, robots, crawlers, data mining tools or the like) other than the software and/or search agents provided by Thread or other generally available third-party web browsers;</li>
+                        <li>Send any unsolicited or unauthorized advertising, promotional materials, email, junk mail, spam, chain letters or other form of solicitation;</li>
+                        <li>Use any meta tags or other hidden text or metadata utilizing a Thread trademark, logo URL or product name without Thread's express written consent;</li>
+                        <li>Use the Service or Customer Data, or any portion thereof, for any purpose contrary to Customer's policies or requirements, or in any manner not permitted by these Terms;</li>
+                        <li>Forge any TCP/IP packet header or any part of the header information in any email or newsgroup posting, or in any way use the Service or Customer Data to send altered, deceptive or false source-identifying information;</li>
+                        <li>Attempt to decipher, decompile, disassemble or reverse engineer any of the software used to provide the Service or Customer Data;</li>
+                        <li>Interfere with, or attempt to interfere with, the access of any user, host or network, including, without limitation, sending a virus, overloading, flooding, spamming, or mail-bombing the Service;</li>
+                        <li>Collect or store any personally identifiable information from the Service from other users of the Service without their express permission;</li>
+                        <li>Impersonate or misrepresent your affiliation with any person or entity;</li>
+                        <li>Violate any applicable law or regulation; or</li>
+                        <li>Encourage or enable any other individual to do any of the foregoing.</li>
+                    </ul>
+
+                    <p>Although we're not obligated to monitor access to or use of the Service or Customer Data or to review or edit any Customer Data, we have the right to do so for the purpose of operating the Service, to ensure compliance with these Terms, and to comply with applicable law or other legal requirements. We reserve the right, but are not obligated, to remove or disable access to any Customer Data stored within the Service, at any time and without notice, including, but not limited to, if we, at our sole discretion, consider any Customer Data to be objectionable or in violation of these Terms. We have the right to investigate violations of these Terms or conduct that affects the Service. We may also consult and cooperate with law enforcement authorities to prosecute users who violate the law.</p>
+
+                    <h2>Feedback</h2>
+
+                    <p>We welcome feedback, comments and suggestions for improvements to the Service ("Feedback"). You can submit Feedback by emailing us at <a href="mailto:support@Thread.cam">support@Thread.cam</a>. You acknowledge and agree: (i) Feedback does not contain confidential or proprietary information; (ii) Thread is not under any obligation of confidentiality, express or implied, with respect to any Feedback; (iii) Thread shall be entitled to use or disclose (or choose not to use or disclose) such Feedback for any purpose, in any way; (iv) Thread may already have under consideration or in development ideas similar to or the same as such Feedback; (v) your Feedback automatically becomes Thread's property without any obligation to you; and (vi) you are not entitled to any accounting, compensation or reimbursement of any kind from Thread under any circumstances. To be clear, Thread shall be entitled to utilize all Feedback in any way without restriction or obligation to you. Without limiting these rights, you hereby grant Thread a non-exclusive, worldwide, perpetual, irrevocable, fully-paid, royalty-free, sublicensable and transferable license under any and all intellectual property rights that you own or control to use, copy, modify, create derivative works based upon and otherwise exploit the Feedback for any purpose.</p>
+
+                    <h2>Warranty Disclaimers</h2>
+
+                    <p>You acknowledge that a variety of actions we take or allow to occur may impair or prevent you from accessing your Customer Data or using the Service at certain times and/or in the same way, for limited periods or permanently, and agree that Thread has no responsibility or liability as a result of any such actions or results, including, without limitation, for the deletion of, or failure to make available to you, any Customer Data. You agree that we shall not be liable to you or to any third party for any modification, suspension or discontinuance of any part of the Service. However, if you are a subscriber for paid version of the Service (a "Paid Service"), and find that any such modifications or interruption of the Paid Service adversely affects you, you may notify our Support team, explain the adverse impact the modification has created and, if you desire, request a termination of your Paid Service. Upon receipt of any such request, we will endeavor to promptly remedy the adverse impact caused by the modification, extend the duration of your Paid Service subscription for a period of time equal to the interruption and/or refund a portion of your Paid Service subscription fee equal to the remaining unused term of the Paid Service subscription, as we determine appropriate or as may be required by applicable law.</p>
+
+                    <p>The Service is designed to work with multiple Third Party Service providers, but we may not have control over how our Service integrates from time to time with such services, and we do not control the operation of those services. Accordingly, you acknowledge and agree that (i) we are not responsible for the performance of such Third Party Services or other third party services we may reference or provide links to, including, without limitation, their use or treatment of your data therein; (ii) we are not responsible or liable for any content or other materials generated by such services or applications; (iii) we are not responsible for any technical inability to access Customer Data in such services via our Service; and (iv) we shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such services or applications. Please ensure you have read and understand the applicable terms of service and privacy policy for each other service. You acknowledge sole responsibility for and assume all risk arising from, your use of any third-party websites or resources.</p>
+
+                    <p><strong>THE SERVICE AND CUSTOMER DATA ARE PROVIDED "AS IS," WITHOUT WARRANTY OF ANY KIND. WITHOUT LIMITING THE FOREGOING, WE EXPLICITLY DISCLAIM ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, QUIET ENJOYMENT OR NON-INFRINGEMENT, AND ANY WARRANTIES ARISING OUT OF COURSE OF DEALING OR USAGE OF TRADE.</strong> We make no warranty that the Service will meet your requirements or be available on an uninterrupted, secure, or error-free basis. We make no warranty regarding the quality, accuracy, timeliness, truthfulness, completeness or reliability of any Customer Data.</p>
+
+                    <h2>Indemnity</h2>
+
+                    <p>To the maximum extent permitted by applicable law, you will indemnify and hold harmless Thread and its officers, directors, employee and agents, from and against any claims, disputes, demands, liabilities, damages, losses, and costs and expenses, including, without limitation, reasonable legal and accounting fees arising out of or in any way connected with (i) your access to or use of the Service or Customer Data, (ii) your Customer Data, or (iii) your violation of these Terms.</p>
+
+                    <h2>Limitation of Liability</h2>
+
+                    <p><strong>NEITHER Thread NOR ANY OTHER PARTY INVOLVED IN CREATING, PRODUCING, OR DELIVERING THE SERVICE WILL BE LIABLE FOR ANY INCIDENTAL, SPECIAL, EXEMPLARY OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS, LOSS OF DATA OR GOODWILL, SERVICE INTERRUPTION, COMPUTER DAMAGE OR SYSTEM FAILURE OR THE COST OF ANY SUBSTITUTE SERVICE ARISING OUT OF OR IN CONNECTION WITH THESE TERMS OR FROM THE USE OF OR INABILITY TO USE THE SERVICE, WHETHER BASED ON WARRANTY, CONTRACT, TORT (INCLUDING NEGLIGENCE), PRODUCT LIABILITY OR ANY OTHER LEGAL THEORY, AND WHETHER OR NOT Thread HAS BEEN INFORMED OF THE POSSIBILITY OF SUCH DAMAGE, EVEN IF A LIMITED REMEDY SET FORTH HEREIN IS FOUND TO HAVE FAILED OF ITS ESSENTIAL PURPOSE.</strong> SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES, SO THE ABOVE LIMITATION MAY NOT APPLY TO YOU.</p>
+
+                    <p><strong>IN NO EVENT WILL Thread'S TOTAL LIABILITY ARISING OUT OF OR IN CONNECTION WITH THESE TERMS OR FROM THE USE OF OR INABILITY TO USE THE SERVICE EXCEED THE AMOUNT YOU HAVE PAID TO Thread FOR USE OF THE SERVICE DURING THE THEN-CURRENT OR MOST RECENT SUBSCRIPTION TERM OR ONE HUNDRED DOLLARS ($100), IF YOU HAVE NOT HAD ANY PAYMENT OBLIGATIONS TO Thread, AS APPLICABLE.</strong></p>
+
+                    <p><strong>THE EXCLUSIONS AND LIMITATIONS OF DAMAGES SET FORTH ABOVE ARE FUNDAMENTAL ELEMENTS OF THE BASIS OF THE BARGAIN BETWEEN Thread AND YOU.</strong></p>
+
+                    <h2>Dispute Resolution</h2>
+
+                    <h3>Governing Law</h3>
+
+                    <p>These Terms and any action related thereto will be governed by the laws of the State of California without regard to its conflict of laws provisions. Exclusive jurisdiction and venue for actions related to these Terms or your use of the Service will be the state and federal courts located in San Francisco County, California, United States, and both parties consent to the jurisdiction of such courts with respect to any such actions.</p>
+
+                    <h3>Alternative Dispute Resolution Process</h3>
+
+                    <p>Unless you are subject to the Mandatory Arbitration Provisions set out below, and subject to any applicable laws, if a claim arises between you and Thread where the total value of such claim is less than US$10,000, the party initiating the claim may elect to have the dispute resolved pursuant to a binding arbitration process that does not require attendance in person. This "Alternative Dispute Resolution Process" shall be initiated by either of us sending notice to the other, in which event you and Thread agree to use our reasonable efforts to agree within thirty (30) days upon an individual or service to manage the Alternative Dispute Resolution Process (the "Arbitration Manager") according to the following requirements: (i) neither party shall be required to attend any proceeding in person, (ii) the proceeding will be conducted via written submissions, telephone or online communications or as otherwise agreed upon, (iii) the fees for the Arbitration Manager will be borne equally by the parties or be submitted to the Arbitration Manager to determine as part of the dispute and (iv) the judgment rendered by the Arbitration Manager may be entered in any court of competent jurisdiction for enforcement.</p>
+
+                    <p>If you are a resident of the European Union (EU), please note that we offer this Alternative Dispute Resolution Process, but we cannot offer you the European Commission Dispute Platform as we do not have an establishment in the EU.</p>
+
+                    <h3>Mandatory Arbitration Provisions</h3>
+
+                    <p>If you reside in the United States or are otherwise subject to the US Federal Arbitration Act, you and Thread agree to resolve any claims relating to these Terms or the Service - except any dispute relating to the enforcement or validity of intellectual property rights - through final and binding arbitration by a single arbitrator, except as set forth under Exceptions to Agreement to Arbitrate below. This includes disputes arising out of or relating to interpretation or application of this "Mandatory Arbitration Provisions" section, including its enforceability, revocability, or validity. The Federal Arbitration Act governs the interpretation and enforcement of these Mandatory Arbitration Provisions.</p>
+
+                    <p>You can decline this agreement to arbitrate by contacting us at <a href="mailto:support@Thread.cam">support@Thread.cam</a> and clearly stating your election to opt out of arbitration, and providing the Customer name, email and physical addresses, within 30 days of the Customer first subscribing for the Service.</p>
+
+                    <p>The American Arbitration Association (AAA) will administer the arbitration under its Commercial Arbitration Rules and the Supplementary Procedures for Consumer Related Disputes (to the extent applicable), as modified by these Mandatory Arbitration Provisions. You may review those rules and procedures, and obtain a form for initiating arbitration proceedings at the AAA's website. The arbitrator will decide the substance of all claims in accordance with the laws of the State of California, including recognized principles of equity, and will honor all claims of privilege recognized by law. The arbitrator's award shall be final and binding and judgment on the award rendered by the arbitrator may be entered in any court possessing jurisdiction over the parties, except for a limited right of appeal under the Federal Arbitration Act.</p>
+
+                    <p>The arbitration will be held in the United States county where you live or work, San Francisco (CA), or any other location we agree to. If, however, the value of the relief sought is US$10,000 or less, either of us may elect to have the arbitration conducted by telephone or based solely on written submissions, which election shall be binding on us, subject to the arbitrator's discretion to require an in-person hearing. Attendance at an in-person hearing may be made by telephone by you and/or us, unless the arbitrator requires otherwise.</p>
+
+                    <p>The AAA rules will govern payment of all arbitration fees. If the amount of the claim exceeds US$10,000 and you are able to demonstrate that the costs of arbitration will be prohibitive as compared to the costs of litigation, Thread will pay as much of the filing, administration and arbitrator fees as the arbitrator deems necessary to prevent the arbitration from being cost-prohibitive. If the arbitrator determines the claim(s) you assert in the arbitration are frivolous, Thread will not pay any of your fees and, if Thread has paid any of your fees, you agree to reimburse Thread for all such fees associated with the arbitration paid by Thread on your behalf, which you otherwise would be obligated to pay under the AAA's rules.</p>
+
+                    <p>We agree with you that there shall be exceptions to the requirement to resolve disputes under the Mandatory Arbitration Provisions, as described in this paragraph. Either you or Thread may assert claims, if they qualify, in small claims court in San Francisco, California or any United States county where you live or work. In addition, either the Customer or Thread may bring a lawsuit solely for injunctive relief to stop unauthorized use or abuse of the Service, or intellectual property infringement (for example, trademark, trade secret, copyright, or patent rights) without first engaging in arbitration or the informal dispute-resolution process described above. If the agreement to arbitrate is found not to apply to you or your claim, you agree to the exclusive jurisdiction of the state and federal courts in San Francisco County, California to resolve your claim.</p>
+
+                    <h3>No Class Actions</h3>
+
+                    <p>You may only resolve disputes with us on an individual basis, and may not bring a claim as a plaintiff or a class member in a class, consolidated, or representative action. Class arbitrations, class actions, private attorney general actions, and consolidation with other arbitrations aren't allowed. If this specific paragraph is held unenforceable, then the entirety of this "Mandatory Arbitration Provisions" section will be deemed void.</p>
+
+                    <h3>Special Notice for California Users</h3>
+
+                    <p>Under California Civil Code Section 1789.3, users of the Service from California are entitled to the following specific consumer rights notice: The Complaint Assistance Unit of the Division of Consumer Services of the California Department of Consumer Affairs may be contacted in writing at 1625 North Market Blvd., Suite N 112, Sacramento, CA 95834, or by telephone at (916) 445-1254 or (800) 952-5210. You may of course contact us at <a href="mailto:support@Thread.cam">support@Thread.cam</a>, phone: 715.550.7030, or send us a message at:</p>
+
+                    <p><strong>aSaaSins LLC</strong><br>
+                    18040 Upper Midhill Drive<br>
+                    West Linn, OR 97068<br>
+                    Attn: Justin Vandehey</p>
+
+                    <h2>General Terms</h2>
+
+                    <h3>Complete Agreement</h3>
+
+                    <p>These Terms together with any applicable Order Form constitute the entire and exclusive understanding and agreement between Thread and you regarding the Service, and these Terms supersede and replace any and all prior oral or written understandings or agreements between Thread and you regarding the Service. However, to the extent of any conflict or inconsistency between the provisions in these Terms and any other agreements or provisions referenced in these Terms, the following order of precedence will apply: (1) the terms of any Order Form (if any), (2) the portions of the Applicable Customer Terms that apply to Customer (if any), and (3) these Terms. Notwithstanding any language to the contrary therein, no terms or conditions stated in a Customer purchase order, vendor onboarding process or web portal, or any other Customer order documentation (excluding a Thread-accepted Order Form) will be incorporated into or form any part of these Terms, and all such terms or conditions will be null and void.</p>
+
+                    <h3>Severability</h3>
+
+                    <p>These Terms will be enforced to the fullest extent permitted under applicable law. If for any reason a court of competent jurisdiction finds any provision of these Terms invalid or unenforceable, that provision will be enforced to the maximum extent permissible and the other provisions of these Terms will remain in full force and effect.</p>
+
+                    <h3>Assignment</h3>
+
+                    <p>You may not assign or transfer the right to use the Service, or Customer's obligations under these Terms, by operation of law or otherwise, without Thread's prior written consent, except in the case of a merger, acquisition, or sale of all or substantially all assets of Customer, after notice to Thread. It shall be Customer's responsibility to ensure its billing and contact information is current at all times despite any such assignment. Any attempt by you to assign or transfer the right to use the Service, or Customer's obligations under these Terms, without such consent, will be null and void. Thread's remedy for any purported assignment by the Customer in breach of this section will be, at its election, termination of these Terms upon written notice. Thread may freely assign or transfer the Service, or Thread's obligations under these Terms without restriction. Subject to the foregoing, these Terms will bind and inure to the benefit of the parties, their successors and permitted assigns.</p>
+
+                    <h3>Notices</h3>
+
+                    <p>Any notice required or permitted under these Terms must be in writing and delivered by email (i) to you at the email address included within your Customer Information or (ii) to Thread at <a href="mailto:support@Thread.cam">support@Thread.cam</a>. We may also elect to provide notice to you by delivering a message to one or more Users within the Service if the initial Administrator is no longer a User within Customer's subscription, and you have not provided us with the identity of a replacement Administrator. You agree that all notices and other communications that we provide to you electronically satisfy any legal requirement that such communications be in writing. The date of receipt will be deemed the date on which such notice is transmitted.</p>
+
+                    <h3>Waiver</h3>
+
+                    <p>Thread's failure to enforce any right or provision of these Terms will not be considered a waiver of such right or provision. The waiver of any such right or provision will be effective only if in writing and signed by a duly authorized representative of Thread. Except as expressly set forth in these Terms, the exercise by either party of any of its remedies under these Terms will be without prejudice to its other remedies under these Terms or otherwise.</p>
+
+                    <h3>Publicity</h3>
+
+                    <p>Customer grants us the right to use Customer's organization name and logo as a reference for marketing or promotional purposes on our website and in other public or private communications with our existing or potential customers, subject to Customer's standard trademark usage guidelines as provided to us or published by Customer from time-to-time. We will abide by your wishes, however, if you notify us that you would prefer we not use you as a reference.</p>
+
+                    <h3>Force Majeure</h3>
+
+                    <p>Neither us nor Customer will be liable by reason of any failure or delay in the performance of any obligations on account of events beyond our reasonable control, which may include denial-of-service attacks, a failure by a Service Provider, strikes, shortages, riots, fires, acts of nature, war, terrorism, and governmental action.</p>
+
+                    <h2>Applicable Customer Terms</h2>
+
+                    <p>The following Applicable Customer Terms shall automatically apply to the contract between Thread and any government Customer described below, in which case any conflict between the Applicable Customer Terms and the Terms provided above shall be governed by these Applicable Customer Terms:</p>
+
+                    <h3>U.S. Government Customers</h3>
+
+                    <p>If Customer is a United States government or public entity (or use of the Service is for the United States government), the terms of this Section apply:</p>
+
+                    <ul>
+                        <li>The Service is a "commercial item," as defined at 48 C.F.R. §2.101, and constitutes "commercial computer software" and "commercial computer software documentation," as used in 48 C.F.R. §12.212 or 48 C.F.R. §227.7202 to §227.7204. This commercial computer software and related documentation is provided to end users for use, by and on behalf of the United States government, with only those rights as are granted to all other end users pursuant to the terms and conditions herein.</li>
+                        <li>The sections in the Terms under the captions "Autorenewal," "Indemnity," and "Dispute, Resolution" and are hereby waived to the extent they are inconsistent with federal law.</li>
+                        <li>We agree that Customer's seals, trademarks, logos, service marks, trade names, and the fact that Customer uses our Service, will not be used by us in such a manner as to state or imply that our products or services are endorsed, sponsored or recommended by Customer or by any other element of the United States government, or are considered by Customer or the United States government to be superior to any other products or services. Except where Customer has provided any design or content into the Service, or for links to or promotion of such pages, we agree not to display any Customer or government seals, trademarks, logos, service marks, and trade names on our homepage or elsewhere on one of our hosted sites unless permission to do so has been granted by Customer or by other relevant federal government authority. We may list Customer's name in a publicly available customer list so long as the name is not displayed in a more prominent fashion than that of any other customer.</li>
+                    </ul>
+
+                    <h3>State or Local Government Customers</h3>
+
+                    <p>This Section applies to Customer if Customer is a state or local government, but only to the extent the Service is being used in the User's official capacity as a state or local government official. The sections in the Terms under the captions "Autorenewal," "Indemnity," and "Dispute Resolution," will not apply to Customer only to the extent Customer's jurisdiction's laws prohibit Customer from accepting the requirements in those sections.</p>
+
+                    <h3>Thread Not a Government Contractor</h3>
+
+                    <p>Notwithstanding any provision in these Applicable Customer Terms to the contrary, Thread shall not be considered a government contractor for any federal, state, local, or foreign government.</p>
+
+                    <h2>Contact Information</h2>
+
+                    <p>If you have any questions about these Terms or the Service, please contact Thread at <a href="mailto:support@Thread.cam">support@Thread.cam</a>, phone: 715.550.7030, physical address: aSaaSins LLC, 18040 Upper Midhill Dr., West Linn, OR 97068</p>
+
+                    <p>Please note that "Slack", "Microsoft Teams", and "Stripe" are trademarks of Slack Technologies, Inc., Microsoft Corporation, Inc., and Stripe, Inc., respectively, and or their respective affiliates in the U.S. and other countries, and other trademarks and service marks referenced herein are the trademarks of their respective owners. Thread does not endorse any of these services, and neither Slack, Microsoft Teams, Stripe nor any other services mentioned in these Terms should be interpreted as an endorsement or recommendation of any Thread service, and no assumption of any endorsement should be taken from Thread's integration with or use of any of those services.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border-color);">
+                <a href="index.html" class="btn-secondary">← Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">Thread</div>
+                    <p>Built for the future of customer success</p>
+                </div>
+                <div class="footer-ctas">
+                    <a href="index.html#demo" class="btn-primary">Request Demo</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                    <p>&copy; 2025 Thread Solutions Inc. All rights reserved.</p>
+                    <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                        <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Privacy</a>
+                        <a href="terms.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Terms</a>
+                        <a href="subprocessors.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Subprocessors</a>
+                        <a href="cookie-policy.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Cookies</a>
+                        <a href="data-processing-agreement.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">DPA</a>
+                        <a href="compliance-report.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Compliance</a>
+                        <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

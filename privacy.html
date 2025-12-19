@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Thread</title>
+    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Load Delve first -->
+    <script src="https://cdn.delve.co/src/delve-cookie-consent-default.js"></script>
+
+    <!-- Load Google Analytics early (for consent mode pings) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJW5L0WQVW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-RJW5L0WQVW');
+    </script>
+    <script>
+      // Set up Google Consent Mode defaults
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+
+      gtag('consent', 'default', {
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        ad_storage: 'denied',
+        analytics_storage: 'denied'
+      });
+
+      // Initialize GA (no cookies until consent)
+      gtag('js', new Date());
+      gtag('config', 'G-RJW5L0WQVW', { send_page_view: false });
+    </script>
+
+    <script>
+      DelveCookieConsent.init({
+        message: "We use cookies to enhance your experience and analyze our traffic.",
+        acceptText: "Accept all cookies",
+        rejectText: "Reject non-essential",
+        settingsText: "Cookie preferences",
+        privacyPolicyUrl: "https://www.thread.app/privacy-policy",
+        manageScriptTags: true,
+        ccpaEnabled: false,
+        showInNonRegulatedRegions: true, // allow GA in non-regulated regions
+
+        categories: {
+          necessary: {
+            name: 'Necessary',
+            description: 'Essential cookies required for the website to function.',
+            required: true,
+            enabled: true
+          },
+          analytics: {
+            name: 'Analytics',
+            description: 'Help us understand how visitors use our website.',
+            enabled: false,
+            services: {
+              google_analytics: {
+                label: 'Google Analytics',
+                enabled: true,
+                onAccept: () => {
+                  // Update consent to grant analytics and ads
+                  gtag('consent', 'update', {
+                    analytics_storage: 'granted',
+                    ad_user_data: 'granted',
+                    ad_personalization: 'granted',
+                    ad_storage: 'granted'
+                  });
+
+                  // Send initial page_view now that consent is granted
+                  gtag('event', 'page_view');
+                }
+              }
+            }
+          },
+          marketing: {
+            name: 'Marketing',
+            description: 'Used to track visitors and show ads.',
+            enabled: false,
+            services: {
+              facebook_pixel: {
+                label: 'Facebook Pixel',
+                enabled: true,
+                onAccept: () => {
+                  // Load Facebook Pixel after consent
+                  !window.fbq && (function(f,b,e,v,n,t,s){
+                    if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                    n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+                    s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+                  })(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+                  fbq('init', 'YOUR_PIXEL_ID');
+                  fbq('consent', 'grant');
+                }
+              }
+            }
+          }
+        },
+
+        onAccept: (cats) => console.log('Accepted:', cats),
+        onReject: () => {
+          // Keep everything denied
+          gtag('consent', 'update', {
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            ad_storage: 'denied',
+            analytics_storage: 'denied'
+          });
+          console.log('Non-essential cookies rejected');
+        }
+      });
+    </script>
+
+    <style>
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-font-smoothing: antialiased;
+      -o-font-smoothing: antialiased;
+    }
+    .delve-cookie-banner {
+      z-index: 999999 !important;
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">Thread</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#pricing">Pricing</a>
+                    <a href="index.html#demo" class="btn-primary-nav">Request Demo</a>
+                    <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 8px 16px; font-size: 14px;">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Legal Content -->
+    <section class="post-content" style="padding-top: 160px;">
+        <div class="container">
+            <div class="post-header" style="text-align: left; max-width: 900px; margin: 0 auto 60px;">
+                <h1>Privacy Policy</h1>
+                <h2 style="font-size: 24px; font-weight: 600; margin-bottom: 16px; color: var(--text-dark);">Thread Solutions Inc. (dba Thread) Privacy Policy</h2>
+                <p style="color: var(--text-light); font-size: 16px;">Effective Date: March 6, 2024</p>
+            </div>
+            <div class="post-body" style="max-width: 900px; margin: 0 auto;">
+                <div class="post-body-content">
+                    <h2>Thread Privacy Policy Overview</h2>
+                    <p>We care deeply about your rights as a Thread customer and we will always respect your trust. We've done our best to clearly lay out our policies here. If you see an opportunity for improvement, please let us know by emailing <a href="mailto:support@thread.cam">support@thread.cam</a>. We're providing this Privacy Policy to explain our practices regarding the collection, use and disclosure of information that we receive from our Customer and individual Users (who we will refer to as "you," as applicable) when you access or use our web site and the Thread service (which we collectively refer to as the "Service").</p>
+                    <p>Please note that, unless we define a term in this Privacy Policy, a capitalized term used in this Privacy Policy has the meaning defined in our Terms of Service. So, please make sure that you have read and understand our Terms of Service. You should also understand that this Privacy Policy only applies to our Service and not to any Third Party Service or other third party website, service or application you may use with our Service, which should have their own published policy.</p>
+
+                    <h2>Modification of this Privacy Policy</h2>
+                    <p>We may revise this Privacy Policy from time to time, as new features, technology, or legal requirements arise. You may always determine if this Privacy Policy has changed by checking the Effective Date at the top of this page. If we make a significant change, we'll notify you and, where required, seek your consent. If we update this Privacy Policy, you are free to decide whether to accept the updated terms or to stop using the Service; your continued use of the Service after the effectiveness of that update will be deemed to represent your consent to the provisions in the updated Privacy Policy.</p>
+
+                    <h2>Collecting information</h2>
+
+                    <h3>Personal Information</h3>
+                    <p>When we refer to "personal information" in this Privacy Policy, we mean information that can be associated with a specific person and could be used to identify that specific person whether from that data alone or from that data in combination with other information that we have access to. We do not consider personal information to include information that has been made anonymous or aggregated so that it can no longer be used, whether in combination with other information or otherwise, to identify a specific person. The personal information we collect includes, but is not limited to, personal information of the kinds described below:</p>
+                    <ul>
+                        <li>information you provide when subscribing for the Service, including Customer Information;</li>
+                        <li>financial information, including credit card, debit card or bank account information, which you provide when paying for our Service;</li>
+                        <li>information you include by engaging with the service, including any group or individuals with whom you are associated in a Third Party Service;</li>
+                        <li>information you provide in connection with any customer support, product evaluation, dispute resolution and other communications with our Service and personnel; and</li>
+                        <li>information regarding the geographic location where your computing device is located when interacting with our Service.</li>
+                    </ul>
+
+                    <h3>Content from a Third Party Service</h3>
+                    <p>When you deploy the Thread Service within a Third Party Service, you specifically authorize our Service to take certain actions, including collecting Customer Information (to the extent made available by such Third Party Service), and indexing and processing the Customer Data. Your Customer Data is reviewed automatically by our proprietary algorithms to enable you to configure how our Service will operate for you. No humans at Thread will be involved in this process. For example, you may wish to analyze certain workflows, or obtain intelligence on your top users. You may configure our Service to look for certain keywords and other indicators in the communications in the Third Party Service or the Thread service, which will provide you these insights. Your Administrator(s) may elect to obtain reports detailing these analyses, and share these with others. Our Service only stores Customer Data that are explicitly required to operate our Service, for you.</p>
+                    <p>You may also configure our Service's algorithms to monitor Customer Data to improve employee productivity. Our Service can spot communications containing content that enriches the Thread solution for other users of the service. Our Service will process this type of data for use by the Customer, so that it may be distributed among Users or limited to Administrator – determined personnel.</p>
+
+                    <h3>Other Automatically Collected Information</h3>
+                    <p>We use cookies, tracking pixels and similar technologies in our Service to collect information that helps us provide our Service to you, and to learn how our Service is used.</p>
+
+                    <h2>Using Information</h2>
+
+                    <h3>Personal Information</h3>
+                    <p>We use your personal information for the following purposes:</p>
+                    <ul>
+                        <li>to establish the Customer account with our Service, and to communicate with the Administrator and Users regarding the Customer account;</li>
+                        <li>to establish authorization for our Service to access the Third Party Service(s) that the Administrator requests;</li>
+                        <li>to operate, improve and personalize our Service for Users, including any collection and processing of payment for our Service;</li>
+                        <li>to provide you information regarding our Service and other services or products, or redeem promotional offers (consistent with your communications preferences), including sponsored gifts or rewards;</li>
+                        <li>to provide reports and other information in the Customer dashboard;</li>
+                        <li>to create User profiles; and</li>
+                        <li>to contact Administrators and Users to detect, prevent and mitigate fraudulent or illegal activities, investigate or inform about any security issues, enforce our Terms of Service with you or other applicable policies, and comply with our legal obligations.</li>
+                    </ul>
+
+                    <h3>Third Party Service Information</h3>
+                    <p>We process the information obtained from a Third Party Service in the manner directed by your Administrator(s) in order to provide the Service (e.g., to promote Users feedback, monitor User sentiment and provide insights to the Customer relating to its Users)</p>
+                    <p>Our Service operates on computers owned and/or operated by Thread and located in third-party data centers in the United States and, possibly in other countries in the future. These computers store all Users' feedback and performance data collected in the manner required to perform according to the Administrator's configuration of the Service (including any relevant Customer Data obtained from the Third Party Service(s)), all in an encrypted form using industry standard security.</p>
+                    <p>We do not enable our personnel to access Customer Data obtained from a Third Party Service, or disclose such Customer Data to third parties, except in the following limited circumstances:</p>
+                    <ul>
+                        <li>you request assistance from us with respect to any relevant Customer Data obtained from a Third Party Service, in which event our customer support personnel will obtain your prior consent to our accessing the Customer Data on the Third Party Service (including anything stored on such Third Party Service in addition to the relevant content provided to you in your Users' communications, to other Users or our Service);</li>
+                        <li>we believe our Terms of Service have been violated and confirmation is required, or we otherwise have an obligation to review the Customer Data in the Third Party Service;</li>
+                        <li>we believe it is necessary to protect the rights, property or personal safety of Thread, its Customers or Users (including to protect against potential spam, malware or other security concerns); or</li>
+                        <li>in order to comply with our legal obligations, such as responding to warrants, court orders or other legal process.</li>
+                    </ul>
+                    <p>As part of the Service we may share aggregate, anonymous demographic information, survey results, market trends, and other analysis that we create based on the information we receive from you and other customers. Such information will never identify you, your organization, or your Users. We may also share information via the Service to the Third Party Service(s) you link to the Service. For example, if you use the Service to send a survey to your Users via Zoom, Google Hangouts, Slack or Microsoft Teams, we may share the results of that survey to your Users via Zoom, Google Hangouts, Slack or Microsoft Teams as well.</p>
+                    <p>We vigilantly protect the privacy of your account and the Customer Data stored in our computer systems and, whenever we determine it appropriate, we provide you with notice if we believe we are compelled to comply with a third party's request for information about your account.</p>
+
+                    <h3>Google Workspace APIs</h3>
+                    <p>We use Google Workspace APIs solely to enable features within the Thread app. These APIs are not used to develop, improve, or train generalized AI and/or ML models.</p>
+
+                    <h2>Retaining Information</h2>
+                    <p>We retain Customer Information, Customer Data and the communications and analytics generated by use of our Service (collectively, the "Service Output"), as long as we believe it is necessary and relevant for the operation of our Service. Service Output is retained at a company and employee level. A Customer Administrator may request that Customer Information and/or Customer Data be deleted from our systems after the termination of a Customer's subscription. (However, Customers should understand that Users may elect to export and retain their own feedback data.) Under certain circumstances we may retain Customer Information from terminated subscriptions. We do this to ensure that the Service is not interrupted and none of the Service Output is lost due to interrupted Service subscriptions or other unanticipated events. We may also retain Customer Information after a Customer subscription term ends to prevent fraud, collect any fees owed, resolve disputes, troubleshoot problems, assist with any investigation, enforce our Terms of Service, comply with applicable legal data retention obligations and take other actions permitted by law.</p>
+
+                    <h2>Information Choices and Access</h2>
+
+                    <h3>Personal Information</h3>
+                    <p>The Administrator and Users choose what personal information we obtain, by providing us the Customer Information and establishing their personal user profiles in a Third Party Service, and each of them may choose to modify or limit such information. It is the Administrator's responsibility to ensure the Customer Information is correct, and we may rely upon that information being current. You and each User consents to our using the then-current Customer Information and User address(es) to deliver notices and important messages.</p>
+                    <p>Users may also elect to publish and share certain Service Output, such as custom gifs or content, among other Users of the Service, or more broadly. Thread is not responsible for the actions of Users who choose to share this Service Output publicly or on their social networks.</p>
+
+                    <h3>Communication Preferences</h3>
+                    <p>We do not sell or rent your Customer Information to third parties for their marketing purposes without your explicit consent. We may contact you via email or within the Service with Service-related announcements that we think may be beneficial to you, and special offers. We also may contact you with information about products and services from our business partners. You may opt out of such communications at any time by following the opt-out instructions provided in such messages. You may not opt out of receiving what we consider to be essential Service-related messages, customer service responses or other communications relating to inappropriate use of the Service or requests from third-parties to access information in your account. We may deliver those messages using any of the Customer Information in our records. Please note that if you have agreed to receive marketing communications from any Third Party Service with which you are using Thread, you must change your communication preferences with them directly.</p>
+                    <p>We will honor any statutory right you might have to access, modify or erase your personal information. You can contact Thread customer support at <a href="mailto:support@Thread.cam">support@Thread.cam</a> to request access. Where you have a legal right to request access or request the modification or erasure of information, we can still withhold that access or decline to correct information in some cases in accordance with applicable law, but will give you reasons if we do so.</p>
+
+                    <h2>Disclosing Information</h2>
+                    <p>We exist to provide a valuable service to you, and not to obtain Customer or User information to sell or rent to third parties. In addition to actions you elect to take to enable us to share your credentials with a Third Party Service to integrate Thread with such Third Party Service, the circumstances in which we disclose information are limited to the following:</p>
+                    <ul>
+                        <li>we have the Administrator or User's explicit consent to share the information;</li>
+                        <li>we need to share Customer Information or Customer Data or Service Output with service providers who process data on our behalf in order to operate and improve the features and functionality of the Service; process your payment transactions; fulfil your Service requests; and help us communicate with you as described elsewhere in this Privacy Policy; these providers are subject to strict data protection requirements;</li>
+                        <li>we believe it is necessary to investigate potential violations of our Terms of Service, to enforce the Terms of Service, or where we believe it is necessary to investigate, prevent or take action regarding illegal activities, suspected fraud or potential threats against persons, property or the systems on which we operate the Service;</li>
+                        <li>we determine that the access, preservation or disclosure of information is required or permitted by law to protect the rights, property or personal safety of Thread or Users of the Service, or is required to comply with applicable laws, including compliance with warrants, court orders, subpoenas, legal process, or other lawful government requests (including in response to public authorities to meet national security or law enforcement requirements); or</li>
+                        <li>we do so in connection with the sale or reorganization of all or part of our business, as permitted by applicable law.</li>
+                    </ul>
+                    <p>Some third parties' embedded content or plugins on the Service, such as Facebook "Like" buttons, may allow their operators to learn that you have visited our website, and they may combine this information with other, identifiable information they have collected about your visits to other websites or online services.</p>
+                    <p>In each of these circumstances, we try to minimize the amount of personal information we share to what is directly relevant and necessary to accomplish the specified purpose. As stated above, we do not disclose your Customer Information to third parties for their marketing purposes without your explicit consent.</p>
+                    <p>While we use contractual and other measures to ensure protection of personal information, the laws and regulations relating to privacy and personal information protection in other legal jurisdictions may not be the same as, or similar to, your local privacy laws. The governments, courts, law enforcement or regulatory agencies in these other jurisdictions may be able to request disclosure of personal information through the laws of these countries. In an effort to respect your privacy, we will not otherwise disclose your personal information to law enforcement, other government officials, or other third parties without a subpoena, court order or substantially similar legal procedure, except when we believe in good faith that the disclosure of information is necessary to prevent imminent physical harm, financial loss or to report potentially illegal or fraudulent activity.</p>
+
+                    <h2>Securing Your Information</h2>
+                    <p>We are committed to protecting the security of your information and take reasonable precautions to protect it. We use industry standard encryption to protect your data in transit and while it is stored on our servers. This is commonly referred to as transport layer security (TLS) or secure socket layer (SSL) technology. However, internet data transmissions cannot be guaranteed to be 100% secure, and we cannot ensure the security of information during its transmission between you and us. Accordingly, you acknowledge that when you transport such information, you do so at your own risk.</p>
+                    <p>We protect your information in our systems using technical and administrative security measures designed to reduce the risks of loss, misuse, unauthorized access, disclosure and alteration. Some of the safeguards we use are firewalls and data encryption, physical access controls to our data centers, and information access authorization controls.</p>
+                    <p>If we learn of a system breach, we may attempt to notify you and provide information on protective steps, if available, using the Customer Information that you have provided to us or by posting a notice on our web site and/or via our Service and other communication platforms. Depending on where you live, you may have a legal right to receive such notices in writing.</p>
+
+                    <h2>Service-Related Details</h2>
+                    <p>We also wish to share the following important privacy information related to your use of our Service:</p>
+
+                    <h3>Information from Children</h3>
+                    <p>We do not knowingly collect personal information from children without parental consent. If we learn that we have inadvertently obtained information in violation of applicable laws prohibiting collection of information from children without such consent, we will promptly delete it.</p>
+
+                    <h3>Third Party Privacy Practices</h3>
+                    <p>This Privacy Policy addresses only the use and disclosure of information we collect from you and in operating our Service. If you disclose your information to others using a Third Party Service, their privacy policy and practices will apply. For example, when you communicate with Thread through Zoom, Google Hangouts, Slack or Microsoft Teams, Zoom's Privacy Policy, Google's Privacy Policy, Slack's Privacy Policy or Microsoft Team's Privacy Policy governs those communications. We cannot guarantee the privacy or security of your information once you provide it to a third party and we encourage you to evaluate the privacy and security policies of any third party before entering into a transaction and choosing to share your information.</p>
+
+                    <h3>Scope of Policy</h3>
+                    <p>This Privacy Policy describes your privacy rights when you elect to use our Service, and by using our Service or engaging with us, you accept the substance and application of these terms and policies, and consent to our collection, use, disclosure and retention of your personal information as described in this Privacy Policy. Should you ever disagree with this Privacy Policy, you may provide us with your feedback at <a href="mailto:support@Thread.cam">support@Thread.cam</a>, but such feedback will not vary or supersede these terms. The terms of this Privacy Policy are incorporated by reference in the Terms of Service that you accept when you register to use our Service. aSaaSins LLC is the data controller for our Service, and we may store and process your personal information on our computers in the US and elsewhere in the world where our data centers are located.</p>
+
+                    <h2>Questions or Concerns</h2>
+                    <p>If you have questions or concerns about this Privacy Policy or information handling processes, you may contact us at the following addresses:</p>
+                    <p><strong>aSaaSins LLC</strong><br>
+                    18040 Upper Midhill Dr.<br>
+                    West Linn, OR 97068<br>
+                    Attn: Justin Vandehey<br>
+                    <a href="mailto:support@thread.cam">support@thread.cam</a></p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border-color);">
+                <a href="index.html" class="btn-secondary">← Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">Thread</div>
+                    <p>Built for the future of customer success</p>
+                </div>
+                <div class="footer-ctas">
+                    <a href="index.html#demo" class="btn-primary">Request Demo</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                    <p>&copy; 2025 Thread Solutions Inc. All rights reserved.</p>
+                    <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                        <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Privacy</a>
+                        <a href="terms.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Terms</a>
+                        <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Sign In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
