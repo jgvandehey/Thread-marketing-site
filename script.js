@@ -762,5 +762,62 @@ document.addEventListener('DOMContentLoaded', () => {
             closeCalendlyModal();
         }
     });
+    
+    // Video Modal Functionality
+    const videoPlayButton = document.getElementById('video-play-button');
+    const videoThumbnail = document.getElementById('video-thumbnail');
+    const videoModal = document.getElementById('video-modal');
+    const videoModalOverlay = document.getElementById('video-modal-overlay');
+    const videoModalClose = document.getElementById('video-modal-close');
+    const videoIframe = document.getElementById('video-iframe');
+    const videoId = 'myybCP7IfBs';
+    
+    function openVideoModal() {
+        if (videoModal && videoIframe) {
+            // Set the YouTube embed URL with autoplay
+            videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+    }
+    
+    function closeVideoModal() {
+        if (videoModal && videoIframe) {
+            videoModal.classList.remove('active');
+            // Stop the video by removing the src
+            videoIframe.src = '';
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    }
+    
+    // Open modal when play button or thumbnail is clicked
+    if (videoPlayButton) {
+        videoPlayButton.addEventListener('click', openVideoModal);
+    }
+    
+    if (videoThumbnail) {
+        videoThumbnail.addEventListener('click', (e) => {
+            // Only open if clicking on the thumbnail itself, not the play button
+            if (e.target === videoThumbnail || e.target.classList.contains('video-thumbnail-overlay')) {
+                openVideoModal();
+            }
+        });
+    }
+    
+    // Close modal handlers
+    if (videoModalClose) {
+        videoModalClose.addEventListener('click', closeVideoModal);
+    }
+    
+    if (videoModalOverlay) {
+        videoModalOverlay.addEventListener('click', closeVideoModal);
+    }
+    
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && videoModal && videoModal.classList.contains('active')) {
+            closeVideoModal();
+        }
+    });
 });
 

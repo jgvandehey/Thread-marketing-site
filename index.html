@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thread - Close the Most Expensive Gap in SaaS</title>
+    <link rel="icon" type="image/x-icon" href="images/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="images/favicons/site.webmanifest">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -153,7 +158,7 @@
                     <h1 class="hero-headline">Close the most expensive gap in SaaS</h1>
                     <p class="hero-subheadline">Seamless handoffs from Sales to Success</p>
                     <p style="font-size: 20px; color: var(--text-light); line-height: 1.6; margin-bottom: 40px;">
-                        When your deal moves to "closed won", Thread automatically orchestrates the perfect handoff—no manual work, no context lost, no customer confusion.
+                        When your deal closes, Thread automatically orchestrates the perfect handoff—no manual work, no context lost.
                     </p>
                     <div class="hero-email-form">
                         <form class="email-form" id="hero-email-form">
@@ -173,7 +178,7 @@
                                 <div class="montage-wizard-step" data-step="0">
                                     <div class="montage-wizard-step-icon">1</div>
                                     <div class="montage-wizard-step-label">Deal Status</div>
-                                </div>
+                            </div>
                                 <div class="montage-wizard-step" data-step="1">
                                     <div class="montage-wizard-step-icon">2</div>
                                     <div class="montage-wizard-step-label">Gathering Context</div>
@@ -201,6 +206,48 @@
             </div>
         </div>
     </section>
+
+    <!-- Demo Video Section -->
+    <section class="demo-video-section">
+        <div class="container">
+            <div class="video-section-content">
+                <h2 class="section-headline">See Thread in action</h2>
+                <p class="video-section-description">Watch how Thread seamlessly orchestrates the handoff from Sales to Success</p>
+                <div class="video-preview-container">
+                    <div class="video-thumbnail" id="video-thumbnail" style="background-color: #ff0000 !important; border-radius: 16px;">
+                        <div class="video-thumbnail-overlay"></div>
+                        <button class="video-play-button" id="video-play-button" aria-label="Play demo video">
+                            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="40" cy="40" r="40" fill="white" fill-opacity="0.9"/>
+                                <path d="M32 24L32 56L56 40L32 24Z" fill="#000000"/>
+                            </svg>
+                        </button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="video-modal">
+        <div class="video-modal-overlay" id="video-modal-overlay"></div>
+        <div class="video-modal-content">
+            <button class="video-modal-close" id="video-modal-close" aria-label="Close video">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <div class="video-modal-iframe-container">
+                <iframe 
+                    id="video-iframe"
+                    src="" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
 
     <!-- How It Works Section - Tabbed Interface -->
     <section id="how-it-works" class="tabbed-section">
@@ -312,8 +359,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -342,11 +389,11 @@
                 <div class="task-item" data-status="pending">
                     <div class="task-icon">
                         <span class="task-status-icon">⏳</span>
-                    </div>
+                        </div>
                     <div class="task-content">
                         <h3 class="task-title">Review contract for deltas</h3>
                         <p class="task-description">Analyzing contract terms and identifying deviations from standard agreements</p>
-                    </div>
+                        </div>
                     <div class="task-status">
                         <span class="status-badge status-pending">Planning</span>
                     </div>
@@ -358,7 +405,7 @@
                     <div class="task-content">
                         <h3 class="task-title">Provision customer account access</h3>
                         <p class="task-description">Creating user accounts and setting up access permissions</p>
-                    </div>
+            </div>
                     <div class="task-status">
                         <span class="status-badge status-pending">Planning</span>
                     </div>
@@ -370,7 +417,7 @@
                     <div class="task-content">
                         <h3 class="task-title">Configure product integrations</h3>
                         <p class="task-description">Setting up required integrations based on contract specifications</p>
-                    </div>
+                        </div>
                     <div class="task-status">
                         <span class="status-badge status-pending">Planning</span>
                     </div>
@@ -382,7 +429,7 @@
                     <div class="task-content">
                         <h3 class="task-title">Generate CSM briefing document</h3>
                         <p class="task-description">Compiling comprehensive handoff brief with all deal context</p>
-                    </div>
+            </div>
                     <div class="task-status">
                         <span class="status-badge status-pending">Planning</span>
                     </div>
@@ -390,17 +437,17 @@
                 <div class="task-item" data-status="pending">
                     <div class="task-icon">
                         <span class="task-status-icon">⏳</span>
-                    </div>
+                        </div>
                     <div class="task-content">
                         <h3 class="task-title">Schedule kickoff meeting</h3>
                         <p class="task-description">Automatically scheduling onboarding kickoff with all stakeholders</p>
-                    </div>
+                        </div>
                     <div class="task-status">
                         <span class="status-badge status-pending">Planning</span>
                     </div>
                 </div>
             </div>
-        </div>
+                    </div>
     </section>
 
     <!-- Problem Section -->
@@ -485,7 +532,7 @@
                 <p style="font-size: 22px; font-weight: 600; line-height: 1.5; color: var(--text-dark); margin-bottom: 24px;">
                     CRMs and Customer Success Platforms were built to record what happened. Thread was built to make the right thing happen next.
                 </p>
-            </div>
+                </div>
             <div class="comparison-table-wrapper">
                 <table class="comparison-table">
                     <thead>
@@ -665,9 +712,44 @@
         </div>
     </section>
 
-    <!-- Closing CTA Section -->
-    <section id="demo" class="explainer-section">
+    <!-- Security Section -->
+    <section class="security-section">
         <div class="container">
+            <div class="security-header">
+                <h2 class="security-headline">We take security seriously</h2>
+                <p class="security-cta-link">
+                    Learn more in our <a href="https://thread.delve.co/trust-center" target="_blank" rel="noopener noreferrer">Trust Center</a>
+                </p>
+            </div>
+            <div class="security-badges">
+                <div class="security-badge-item">
+                    <div class="security-badge-image-wrapper">
+                        <img src="images/felt-test/sec-gdpr.webp" alt="GDPR" class="security-badge-image">
+                    </div>
+                    <h3 class="security-badge-title">GDPR</h3>
+                    <p class="security-badge-description">Compliant with European data protection regulations to serve customers globally with confidence.</p>
+                </div>
+                <div class="security-badge-item">
+                    <div class="security-badge-image-wrapper">
+                        <img src="images/felt-test/sec-type1.webp" alt="SOC 2 Type I" class="security-badge-image">
+                    </div>
+                    <h3 class="security-badge-title">SOC 2 Type I</h3>
+                    <p class="security-badge-description">Certified security controls ensure your customer data is protected with industry-leading standards.</p>
+                </div>
+                <div class="security-badge-item">
+                    <div class="security-badge-image-wrapper">
+                        <img src="images/felt-test/sec-type2.webp" alt="SOC 2 Type II" class="security-badge-image">
+                    </div>
+                    <h3 class="security-badge-title">SOC 2 Type II</h3>
+                    <p class="security-badge-description">We are on our way to SOC 2 Type II compliance <span class="security-badge-pill-inline">In observation</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing CTA Section -->
+    <section id="demo" class="explainer-section footer-transition footer-bg">
+        <div class="container" style="position: relative; z-index: 1;">
             <div class="explainer-content" style="text-align: center;">
                 <h2 class="section-headline" style="margin-bottom: 24px;">Fix the handoff gap</h2>
                 <p class="explainer-text" style="font-size: 20px; line-height: 1.8; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
@@ -682,29 +764,35 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer footer-full-bleed">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">Thread</div>
-                    <p>Built for the future of customer success</p>
-                </div>
-                <div class="footer-ctas">
-                    <a href="#" class="btn-primary" onclick="openCalendlyModal(); return false;">Request Demo</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-                    <p>&copy; 2025 Thread Solutions Inc. All rights reserved.</p>
-                    <div style="display: flex; gap: 24px; flex-wrap: wrap;">
-                        <a href="privacy.html" style="color: var(--text-light); text-decoration: none; font-size: 14px; transition: color 0.2s;">Privacy</a>
-                        <a href="terms.html" style="color: var(--text-light); text-decoration: none; font-size: 14px; transition: color 0.2s;">Terms</a>
-                        <a href="subprocessors.html" style="color: var(--text-light); text-decoration: none; font-size: 14px; transition: color 0.2s;">Subprocessors</a>
-                        <a href="cookie-policy.html" style="color: var(--text-light); text-decoration: none; font-size: 14px; transition: color 0.2s;">Cookies</a>
-                        <a href="data-processing-agreement.html" style="color: var(--text-light); text-decoration: none; font-size: 14px; transition: color 0.2s;">DPA</a>
-                        <a href="compliance-report.html" style="color: var(--text-light); text-decoration: none; font-size: 14px; transition: color 0.2s;">Compliance</a>
-                        <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer" style="color: var(--text-light); text-decoration: none; font-size: 14px; transition: color 0.2s;">Sign In</a>
+                <div class="footer-main-content">
+                    <div class="footer-brand">
+                        <div class="logo">Thread</div>
+                        <p>Built for the future of customer success</p>
                     </div>
+                    <div class="footer-ctas">
+                        <a href="#" class="btn-primary" onclick="openCalendlyModal(); return false;">Request Demo</a>
+                    </div>
+                </div>
+                <div class="footer-links-grouped">
+                    <div class="footer-links-column">
+                        <h4 class="footer-links-heading">Legal</h4>
+                        <a href="privacy.html">Privacy</a>
+                        <a href="terms.html">Terms</a>
+                        <a href="subprocessors.html">Subprocessors</a>
+                        <a href="cookie-policy.html">Cookies</a>
+                        <a href="data-processing-agreement.html">DPA</a>
+                        <a href="compliance-report.html">Compliance</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4 class="footer-links-heading">Company</h4>
+                        <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer">Sign In</a>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2025 Thread Solutions Inc. All rights reserved.</p>
                 </div>
             </div>
         </div>

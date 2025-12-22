@@ -36,42 +36,11 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     background: var(--bg-dark);
-    background-image: 
-        /* Woven thread pattern - more visible */
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 3px,
-            rgba(4, 89, 58, 0.04) 3px,
-            rgba(4, 89, 58, 0.04) 6px
-        ),
-        repeating-linear-gradient(
-            -45deg,
-            transparent,
-            transparent 3px,
-            rgba(5, 150, 105, 0.04) 3px,
-            rgba(5, 150, 105, 0.04) 6px
-        ),
-        radial-gradient(at 0% 0%, rgba(4, 89, 58, 0.05) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(5, 150, 105, 0.05) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.03) 0px, transparent 50%);
     position: relative;
 }
 
 body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        /* Thread-like connecting lines - more visible */
-        linear-gradient(to right, transparent 0%, rgba(4, 89, 58, 0.05) 20%, transparent 40%, rgba(5, 150, 105, 0.05) 60%, transparent 80%, rgba(16, 185, 129, 0.05) 100%),
-        linear-gradient(to bottom, transparent 0%, rgba(4, 89, 58, 0.04) 30%, transparent 60%, rgba(5, 150, 105, 0.04) 90%, transparent 100%);
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.7;
+    display: none;
 }
 
 .container {
@@ -604,37 +573,10 @@ section {
     background: var(--bg-dark);
     position: relative;
     z-index: 1;
-    background-image: 
-        /* Thread woven pattern */
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 3px,
-            rgba(4, 89, 58, 0.03) 3px,
-            rgba(4, 89, 58, 0.03) 6px
-        ),
-        repeating-linear-gradient(
-            -45deg,
-            transparent,
-            transparent 3px,
-            rgba(5, 150, 105, 0.03) 3px,
-            rgba(5, 150, 105, 0.03) 6px
-        ),
-        radial-gradient(at 20% 30%, rgba(4, 89, 58, 0.08) 0px, transparent 50%),
-        radial-gradient(at 80% 70%, rgba(5, 150, 105, 0.08) 0px, transparent 50%);
 }
 
 .outcomes-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        linear-gradient(to right, transparent 0%, rgba(4, 89, 58, 0.03) 30%, transparent 60%, rgba(5, 150, 105, 0.03) 90%, transparent 100%);
-    pointer-events: none;
-    z-index: 0;
+    display: none;
 }
 
 .outcomes-grid {
@@ -1156,37 +1098,10 @@ section {
     background: var(--bg-dark);
     position: relative;
     z-index: 1;
-    background-image: 
-        /* Thread woven pattern */
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 3px,
-            rgba(5, 150, 105, 0.03) 3px,
-            rgba(5, 150, 105, 0.03) 6px
-        ),
-        repeating-linear-gradient(
-            -45deg,
-            transparent,
-            transparent 3px,
-            rgba(16, 185, 129, 0.03) 3px,
-            rgba(16, 185, 129, 0.03) 6px
-        ),
-        radial-gradient(at 0% 50%, rgba(4, 89, 58, 0.1) 0px, transparent 50%),
-        radial-gradient(at 100% 50%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
 }
 
 .pillars-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        linear-gradient(135deg, transparent 0%, rgba(5, 150, 105, 0.03) 25%, transparent 50%, rgba(16, 185, 129, 0.03) 75%, transparent 100%);
-    pointer-events: none;
-    z-index: 0;
+    display: none;
 }
 
 .pillar-item {
@@ -1477,37 +1392,10 @@ section {
 .integrations-section {
     background: var(--bg-dark);
     position: relative;
-    background-image: 
-        /* Thread woven pattern */
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 3px,
-            rgba(4, 89, 58, 0.03) 3px,
-            rgba(4, 89, 58, 0.03) 6px
-        ),
-        repeating-linear-gradient(
-            -45deg,
-            transparent,
-            transparent 3px,
-            rgba(16, 185, 129, 0.03) 3px,
-            rgba(16, 185, 129, 0.03) 6px
-        ),
-        radial-gradient(at 30% 50%, rgba(4, 89, 58, 0.08) 0px, transparent 50%),
-        radial-gradient(at 70% 50%, rgba(16, 185, 129, 0.08) 0px, transparent 50%);
 }
 
 .integrations-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        linear-gradient(45deg, transparent 0%, rgba(4, 89, 58, 0.03) 30%, transparent 60%, rgba(16, 185, 129, 0.03) 90%, transparent 100%);
-    pointer-events: none;
-    z-index: 0;
+    display: none;
 }
 
 .integrations-subtext {
@@ -1593,38 +1481,12 @@ section {
 
 /* Explainer Section */
 .explainer-section {
-    background: var(--bg-darker);
+    background: #ffffff;
     position: relative;
-    background-image: 
-        /* Thread woven pattern */
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 3px,
-            rgba(4, 89, 58, 0.03) 3px,
-            rgba(4, 89, 58, 0.03) 6px
-        ),
-        repeating-linear-gradient(
-            -45deg,
-            transparent,
-            transparent 3px,
-            rgba(5, 150, 105, 0.03) 3px,
-            rgba(5, 150, 105, 0.03) 6px
-        ),
-        radial-gradient(at 50% 50%, rgba(4, 89, 58, 0.1) 0px, transparent 50%);
 }
 
 .explainer-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        linear-gradient(to right, transparent 0%, rgba(4, 89, 58, 0.03) 30%, transparent 60%, rgba(5, 150, 105, 0.03) 90%, transparent 100%);
-    pointer-events: none;
-    z-index: 0;
+    display: none;
 }
 
 .explainer-content {
@@ -1647,42 +1509,323 @@ section {
     margin-top: 40px;
 }
 
-/* Pricing Section */
-.pricing-section {
-    background: var(--bg-dark);
+/* Security Section */
+.security-section {
+    padding: 100px 0;
+    background: var(--bg-darker);
     position: relative;
-    padding: 60px 0;
-    background-image: 
-        /* Thread woven pattern */
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 3px,
-            rgba(5, 150, 105, 0.03) 3px,
-            rgba(5, 150, 105, 0.03) 6px
-        ),
-        repeating-linear-gradient(
-            -45deg,
-            transparent,
-            transparent 3px,
-            rgba(16, 185, 129, 0.03) 3px,
-            rgba(16, 185, 129, 0.03) 6px
-        ),
-        radial-gradient(at 0% 50%, rgba(5, 150, 105, 0.1) 0px, transparent 50%),
-        radial-gradient(at 100% 50%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
 }
 
-.pricing-section::before {
-    content: '';
+.security-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.security-cta-link {
+    font-size: 16px;
+    color: var(--text-light);
+    margin: 0;
+}
+
+.security-cta-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.security-cta-link a:hover {
+    color: var(--primary-light);
+    text-decoration: underline;
+}
+
+.security-headline {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-dark);
+    margin: 0;
+    flex: 1;
+    min-width: 300px;
+}
+
+.security-badges {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.security-badge-item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.security-badge-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 8px;
+}
+
+.security-badge-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.security-badge-pill-inline {
+    display: inline-block;
+    background: var(--gradient-primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(4, 89, 58, 0.3);
+    margin-left: 8px;
+}
+
+.security-badge-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.security-badge-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+}
+
+/* Demo Video Section */
+.demo-video-section {
+    padding: 100px 0;
+    background: var(--bg-darker);
+    position: relative;
+    z-index: 1;
+}
+
+.video-section-content {
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.video-section-description {
+    font-size: 20px;
+    color: var(--text-light);
+    margin-bottom: 60px;
+    line-height: 1.6;
+}
+
+.video-preview-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: transparent;
+}
+
+.video-preview-container:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl), 0 0 40px rgba(4, 89, 58, 0.2);
+}
+
+.video-thumbnail {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    background-color: #ff0000 !important;
+    background-image: url('images/felt-test/video-preview.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.video-thumbnail-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-        linear-gradient(to right, transparent 0%, rgba(5, 150, 105, 0.03) 25%, transparent 50%, rgba(16, 185, 129, 0.03) 75%, transparent 100%);
+    background: rgba(0, 0, 0, 0.05);
+    transition: background 0.3s ease;
+    z-index: 1;
     pointer-events: none;
-    z-index: 0;
+}
+
+.video-preview-container:hover .video-thumbnail-overlay {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.video-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+    transition: transform 0.3s ease;
+    padding: 0;
+}
+
+.video-play-button:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.video-play-button:active {
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+.video-play-button svg circle {
+    transition: fill-opacity 0.3s ease;
+}
+
+.video-play-button:hover svg circle {
+    fill-opacity: 1;
+}
+
+/* Video Modal */
+.video-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.video-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+
+.video-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+    z-index: 10001;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.video-modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s ease;
+    z-index: 10002;
+}
+
+.video-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: rotate(90deg);
+}
+
+.video-modal-iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.video-modal-iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Responsive video modal */
+@media (max-width: 768px) {
+    .video-modal-content {
+        width: 95%;
+        max-height: 70vh;
+    }
+    
+    .video-modal-close {
+        top: -50px;
+        right: -10px;
+    }
+    
+    .video-play-button svg {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Pricing Section */
+.pricing-section {
+    background: var(--bg-dark);
+    position: relative;
+    padding: 60px 0;
+}
+
+.pricing-section::before {
+    display: none;
 }
 
 .pricing-grid {
@@ -1801,6 +1944,81 @@ section {
     border-top: 1px solid var(--border-color);
 }
 
+/* Footer with full-bleed background image */
+.footer-full-bleed {
+    background: transparent;
+    background-image: url('images/footer.webp');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    color: var(--text-dark);
+    padding: 0;
+    border-top: none;
+    position: relative;
+    overflow: hidden;
+    margin-top: 0;
+    padding-top: 100px;
+    min-height: 700px;
+}
+
+.footer-full-bleed::before {
+    display: none;
+}
+
+.footer-full-bleed .container {
+    position: relative;
+    z-index: 1;
+    padding-top: 200px;
+    padding-bottom: 100px;
+    min-height: 600px;
+    max-width: 100%;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Seamless transition from CTA to footer */
+.footer-transition {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    position: relative;
+}
+
+.footer-transition::after {
+    display: none;
+}
+
+/* CTA section - pure white, bleeds into footer image */
+.footer-bg {
+    background: #ffffff;
+    position: relative;
+    padding-top: 80px;
+    padding-bottom: 20px;
+    margin-bottom: 0;
+    z-index: 1;
+}
+
+.footer-bg::before {
+    display: none;
+}
+
+/* Override explainer-section background for footer-bg */
+.footer-bg.explainer-section {
+    background: #ffffff !important;
+    background-image: none !important;
+}
+
+.footer-bg.explainer-section::before {
+    display: none !important;
+    background-image: none !important;
+    background: none !important;
+}
+
+.footer-bg .container {
+    position: relative;
+    z-index: 1;
+}
+
 .footer-content {
     display: flex;
     justify-content: space-between;
@@ -1808,6 +2026,84 @@ section {
     margin-bottom: 40px;
     flex-wrap: wrap;
     gap: 32px;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-full-bleed .footer-content {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    padding: 60px 80px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: calc(100% - 64px);
+}
+
+.footer-main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 32px;
+    width: 100%;
+}
+
+.footer-brand {
+    flex: 0 0 auto;
+}
+
+.footer-ctas {
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+
+.footer-links-grouped {
+    display: flex;
+    gap: 80px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.footer-links-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links-heading {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-links-column a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+    line-height: 1.6;
+}
+
+.footer-links-column a:hover {
+    color: var(--primary-color);
+}
+
+.footer-copyright {
+    padding-top: 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: var(--text-light);
+    font-size: 14px;
 }
 
 .footer-brand .logo {
@@ -1832,7 +2128,10 @@ section {
     border-top: 1px solid var(--border-color);
     color: var(--text-light);
     font-size: 14px;
+    position: relative;
+    z-index: 1;
 }
+
 
 .footer-bottom a {
     color: var(--text-light);
@@ -1856,6 +2155,18 @@ section {
 
     .section-headline {
         font-size: 32px;
+    }
+    
+    .security-headline {
+        font-size: 32px;
+    }
+    
+    .security-header {
+        flex-direction: column;
+    }
+    
+    .security-badges {
+        grid-template-columns: 1fr;
     }
 
     .nav-links {
@@ -1884,6 +2195,17 @@ section {
         flex-direction: column;
         text-align: center;
     }
+    
+    .footer-full-bleed .footer-content {
+        padding: 40px 32px;
+        gap: 32px;
+        width: calc(100% - 32px);
+    }
+    
+    .footer-main-content {
+        flex-direction: column;
+        text-align: center;
+    }
 
     .footer-ctas {
         flex-direction: column;
@@ -1893,6 +2215,21 @@ section {
     .footer-ctas .btn-primary,
     .footer-ctas .btn-secondary {
         width: 100%;
+    }
+    
+    .footer-links-grouped {
+        flex-direction: column;
+        gap: 32px;
+        width: 100%;
+    }
+    
+    .footer-links-column {
+        width: 100%;
+    }
+    
+    .footer-full-bleed .container {
+        padding-top: 60px;
+        padding-bottom: 40px;
     }
 }
 
@@ -2313,35 +2650,10 @@ section {
     padding: 100px 0;
     background: var(--bg-dark);
     position: relative;
-    background-image: 
-        /* Thread woven pattern */
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 3px,
-            rgba(4, 89, 58, 0.03) 3px,
-            rgba(4, 89, 58, 0.03) 6px
-        ),
-        repeating-linear-gradient(
-            -45deg,
-            transparent,
-            transparent 3px,
-            rgba(5, 150, 105, 0.03) 3px,
-            rgba(5, 150, 105, 0.03) 6px
-        );
 }
 
 .tabbed-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        linear-gradient(to right, transparent 0%, rgba(4, 89, 58, 0.03) 20%, transparent 40%, rgba(5, 150, 105, 0.03) 60%, transparent 80%, rgba(16, 185, 129, 0.03) 100%);
-    pointer-events: none;
-    z-index: 0;
+    display: none;
 }
 
 .tabbed-interface {
@@ -3266,18 +3578,7 @@ section {
     aspect-ratio: 16 / 9;
 }
 
-.video-thumbnail {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-card) 100%);
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
+/* Removed duplicate .video-thumbnail - using the one in demo-video-section */
 
 .video-thumbnail:hover {
     transform: scale(1.02);
