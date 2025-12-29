@@ -2557,11 +2557,27 @@ section {
 .onboarding-section {
     padding: 100px 0;
     position: relative;
-    background-image: url('images/felt-test/content-context.webp');
+    background-image: url('images/felt-test/context-context.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--bg-darker);
+}
+
+.onboarding-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, 
+        rgba(255, 255, 255, 1) 0%, 
+        rgba(255, 255, 255, 0) 15%, 
+        rgba(255, 255, 255, 0) 85%, 
+        rgba(255, 255, 255, 1) 100%);
+    pointer-events: none;
+    z-index: 1;
 }
 
 
@@ -2569,7 +2585,7 @@ section {
     max-width: 900px;
     margin: 0 auto;
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -2896,6 +2912,12 @@ section {
         width: 140px;
         bottom: -30px;
         right: -30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .screenshot-felt-icon {
+        display: none;
     }
 }
 
