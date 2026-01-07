@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thread Patch - Assurance for High-Stakes Software Purchases</title>
+    <link rel="icon" type="image/x-icon" href="images/favicons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="images/favicons/site.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Load Delve first -->
+    <script src="https://cdn.delve.co/src/delve-cookie-consent-default.js"></script>
+
+    <!-- Load Google Analytics early (for consent mode pings) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJW5L0WQVW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-RJW5L0WQVW');
+    </script>
+    <script>
+      // Set up Google Consent Mode defaults
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+
+      gtag('consent', 'default', {
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        ad_storage: 'denied',
+        analytics_storage: 'denied'
+      });
+
+      // Initialize GA (no cookies until consent)
+      gtag('js', new Date());
+      gtag('config', 'G-RJW5L0WQVW', { send_page_view: false });
+    </script>
+
+    <script>
+      DelveCookieConsent.init({
+        message: "We use cookies to enhance your experience and analyze our traffic.",
+        acceptText: "Accept all cookies",
+        rejectText: "Reject non-essential",
+        settingsText: "Cookie preferences",
+        privacyPolicyUrl: "https://www.thread.app/privacy-policy",
+        manageScriptTags: true,
+        ccpaEnabled: false,
+        showInNonRegulatedRegions: true,
+
+        categories: {
+          necessary: {
+            name: 'Necessary',
+            description: 'Essential cookies required for the website to function.',
+            required: true,
+            enabled: true
+          },
+          analytics: {
+            name: 'Analytics',
+            description: 'Help us understand how visitors use our website.',
+            enabled: false,
+            services: {
+              google_analytics: {
+                label: 'Google Analytics',
+                enabled: true,
+                onAccept: () => {
+                  gtag('consent', 'update', {
+                    analytics_storage: 'granted',
+                    ad_user_data: 'granted',
+                    ad_personalization: 'granted',
+                    ad_storage: 'granted'
+                  });
+                  gtag('event', 'page_view');
+                }
+              }
+            }
+          },
+          marketing: {
+            name: 'Marketing',
+            description: 'Used to track visitors and show ads.',
+            enabled: false,
+            services: {
+              facebook_pixel: {
+                label: 'Facebook Pixel',
+                enabled: true,
+                onAccept: () => {
+                  !window.fbq && (function(f,b,e,v,n,t,s){
+                    if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                    n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+                    s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+                  })(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+                  fbq('init', 'YOUR_PIXEL_ID');
+                  fbq('consent', 'grant');
+                }
+              }
+            }
+          }
+        },
+
+        onAccept: (cats) => console.log('Accepted:', cats),
+        onReject: () => {
+          gtag('consent', 'update', {
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            ad_storage: 'denied',
+            analytics_storage: 'denied'
+          });
+          console.log('Non-essential cookies rejected');
+        }
+      });
+    </script>
+
+    <style>
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-font-smoothing: antialiased;
+      -o-font-smoothing: antialiased;
+    }
+    .delve-cookie-banner {
+      z-index: 999999 !important;
+    }
+    .patch-visual-placeholder {
+      background: var(--gradient-card);
+      border: 2px dashed var(--border-color);
+      border-radius: 12px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      gap: 20px;
+    }
+    .patch-visual-placeholder .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+      width: 100%;
+      max-width: 200px;
+    }
+    .patch-visual-placeholder .arrow {
+      font-size: 24px;
+      color: var(--primary-color);
+    }
+    .patch-step {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .patch-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 23px;
+      top: 48px;
+      width: 2px;
+      height: calc(100% + 8px);
+      background: var(--border-color);
+    }
+    .patch-step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+    .patch-step-content h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+    }
+    .patch-step-content p {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .patch-contrast-section {
+      background: var(--bg-darker);
+      padding: 80px 0;
+    }
+    .patch-contrast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .patch-contrast-card {
+      background: var(--bg-card);
+      padding: 32px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+    .patch-contrast-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--text-dark);
+    }
+    .patch-contrast-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .patch-contrast-card li {
+      padding: 12px 0;
+      padding-left: 32px;
+      position: relative;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .patch-contrast-card.what-is li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success-color);
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .patch-contrast-card.what-is-not li::before {
+      content: '✕';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 18px;
+      opacity: 0.5;
+    }
+    .patch-stitch-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 40px;
+    }
+    .patch-stitch-card {
+      background: var(--gradient-card);
+      padding: 32px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+    .patch-stitch-card h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text-dark);
+    }
+    .patch-stitch-card p {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+    .patch-who-for {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .patch-who-card {
+      background: var(--bg-card);
+      padding: 32px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+    .patch-who-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--text-dark);
+    }
+    .patch-who-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    .patch-who-card li {
+      padding: 8px 0;
+      padding-left: 24px;
+      position: relative;
+      color: var(--text-light);
+    }
+    .patch-who-card li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    .sparkle {
+      display: inline-block;
+      animation: sparkle 2s ease-in-out infinite;
+      font-size: 0.9em;
+    }
+    @keyframes sparkle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
+    }
+    .patch-calculator-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-top: 60px;
+      align-items: start;
+    }
+    .patch-testimonials {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .patch-testimonial {
+      padding: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+    }
+    .patch-testimonial-quote {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .patch-testimonial-author {
+      font-size: 14px;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+    .patch-testimonial-divider {
+      text-align: center;
+      font-size: 24px;
+      color: var(--text-light);
+      opacity: 0.3;
+      margin: 0;
+    }
+    .patch-calculator {
+      background: var(--gradient-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 40px;
+      position: sticky;
+      top: 100px;
+    }
+    .patch-calculator h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 32px;
+      color: var(--text-dark);
+    }
+    .calculator-input-group {
+      margin-bottom: 32px;
+    }
+    .calculator-input-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+    .calculator-input-wrapper {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .calculator-slider {
+      flex: 1;
+      height: 8px;
+      border-radius: 4px;
+      background: var(--bg-darker);
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .calculator-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(4, 89, 58, 0.3);
+    }
+    .calculator-slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 8px rgba(4, 89, 58, 0.3);
+    }
+    .calculator-input {
+      width: 150px;
+      padding: 12px 16px;
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-dark);
+      text-align: right;
+    }
+    .calculator-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(4, 89, 58, 0.1);
+    }
+    .calculator-large-contract {
+      margin-top: 32px;
+      padding: 20px;
+      background: var(--bg-darker);
+      border-radius: 8px;
+      text-align: center;
+    }
+    .calculator-large-contract p {
+      color: var(--text-light);
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+    .calculator-large-contract a {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .calculator-large-contract a:hover {
+      text-decoration: underline;
+    }
+    .calculator-results {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border-color);
+    }
+    .calculator-result-card {
+      background: var(--bg-darker);
+      padding: 24px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .calculator-result-label {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+    .calculator-result-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--primary-color);
+      line-height: 1.2;
+    }
+    .calculator-result-subtext {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-top: 8px;
+    }
+    @media (max-width: 968px) {
+      .hero-two-column {
+        grid-template-columns: 1fr;
+      }
+      .patch-contrast-grid,
+      .patch-stitch-comparison,
+      .patch-who-for {
+        grid-template-columns: 1fr;
+      }
+      .patch-step {
+        flex-direction: column;
+      }
+      .patch-step::after {
+        display: none;
+      }
+      .patch-calculator-section {
+        grid-template-columns: 1fr;
+      }
+      .patch-calculator {
+        position: static;
+      }
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">Thread</div>
+                <div class="nav-links">
+                    <a href="index.html#how-it-works">How It Works</a>
+                    <a href="index.html#pricing">Pricing</a>
+                    <a href="#" class="btn-primary-nav" onclick="openCalendlyModal(); return false;">Request Demo</a>
+                    <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding: 8px 16px; font-size: 14px;">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-two-column">
+                <div class="hero-left">
+                    <h1 class="hero-headline">Assurance for high-stakes software purchases</h1>
+                    <p class="hero-subheadline">Patch creates a shared system of record for what was promised, how delivery is tracking, and what happens if expectations diverge.</p>
+                    <div class="hero-ctas" style="justify-content: flex-start; margin-top: 40px;">
+                        <a href="#early-access" class="btn-primary" onclick="document.getElementById('early-access').scrollIntoView({behavior: 'smooth'}); return false;">Request early access</a>
+                        <a href="#how-patch-works" class="btn-secondary" onclick="document.getElementById('how-patch-works').scrollIntoView({behavior: 'smooth'}); return false;">How it works</a>
+                    </div>
+                </div>
+                <div class="hero-right">
+                    <div class="patch-visual-placeholder">
+                        <div class="card">
+                            <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">Promise</div>
+                            <div style="font-size: 12px; color: var(--text-light);">Contract commitments</div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="card">
+                            <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">Delivery</div>
+                            <div style="font-size: 12px; color: var(--text-light);">Milestone tracking</div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="card">
+                            <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">Resolution</div>
+                            <div style="font-size: 12px; color: var(--text-light);">Issue remediation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Problem Section -->
+    <section class="outcomes-section">
+        <div class="container">
+            <h2 class="section-headline">The Problem Patch Solves</h2>
+            <p style="text-align: center; font-size: 18px; color: var(--text-light); max-width: 800px; margin: 0 auto 60px; line-height: 1.6;">
+                Modern software purchases fail quietly. Deals are sold by one team, implemented by another, and owned long-term by a third. Context gets lost. Assumptions go unstated.
+            </p>
+            <div class="outcomes-grid">
+                <div class="outcome-card">
+                    <div class="outcome-icon" style="font-size: 40px;">🔗</div>
+                    <h3>Broken handoffs</h3>
+                    <p>Context disappears between sales, implementation, and long-term ownership. No one has the full picture.</p>
+                </div>
+                <div class="outcome-card">
+                    <div class="outcome-icon" style="font-size: 40px;">❓</div>
+                    <h3>Missing context</h3>
+                    <p>Assumptions go unstated. When outcomes slip, buyers are left with ambiguity instead of options.</p>
+                </div>
+                <div class="outcome-card">
+                    <div class="outcome-icon" style="font-size: 40px;">⚖️</div>
+                    <h3>Misaligned expectations</h3>
+                    <p>The contract says one thing, reality looks different, and no one agrees on what "success" actually means.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. What Patch Is / Is Not -->
+    <section class="patch-contrast-section">
+        <div class="container">
+            <h2 class="section-headline">What Patch Is</h2>
+            <div class="patch-contrast-grid">
+                <div class="patch-contrast-card what-is">
+                    <h3>What Patch Is</h3>
+                    <ul>
+                        <li>An assurance layer for large, complex software purchases</li>
+                        <li>A shared system of record for promises and delivery</li>
+                        <li>Designed to reduce ambiguity, not create leverage</li>
+                        <li>Works alongside real execution</li>
+                        <li>Most effective when implementation is underway</li>
+                    </ul>
+                </div>
+                <div class="patch-contrast-card what-is-not">
+                    <h3>What Patch Is Not</h3>
+                    <ul>
+                        <li>Not legal enforcement</li>
+                        <li>Not punitive to vendors</li>
+                        <li>Not a replacement for good implementation</li>
+                        <li>Not designed to create leverage through threat</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. How Patch Works -->
+    <section id="how-patch-works" class="tabbed-section">
+        <div class="container">
+            <h2 class="section-headline">How Patch Works</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="patch-step">
+                    <div class="patch-step-number">1</div>
+                    <div class="patch-step-content">
+                        <h3>Capture the Promise <span class="sparkle">✨</span></h3>
+                        <p>Patch automatically imports the contract and key commercial commitments to create a structured promise ledger. <strong>AI extracts and organizes commitments</strong> on your behalf.</p>
+                    </div>
+                </div>
+                <div class="patch-step">
+                    <div class="patch-step-number">2</div>
+                    <div class="patch-step-content">
+                        <h3>Confirm Alignment</h3>
+                        <p>Buyers and vendors explicitly confirm expectations before implementation progresses too far. Patch facilitates this alignment automatically.</p>
+                    </div>
+                </div>
+                <div class="patch-step">
+                    <div class="patch-step-number">3</div>
+                    <div class="patch-step-content">
+                        <h3>Track Delivery <span class="sparkle">✨</span></h3>
+                        <p>Patch automatically links promises to milestones, configuration, and execution signals so risk surfaces early. <strong>AI continuously monitors delivery</strong> on your behalf, logging when things go off track.</p>
+                    </div>
+                </div>
+                <div class="patch-step">
+                    <div class="patch-step-number">4</div>
+                    <div class="patch-step-content">
+                        <h3>Flag Issues <span class="sparkle">✨</span></h3>
+                        <p>When delivery drifts from expectations, <strong>Patch automatically creates a shared issue record</strong> instead of an escalation. No manual tracking required—Patch works on your behalf.</p>
+                    </div>
+                </div>
+                <div class="patch-step">
+                    <div class="patch-step-number">5</div>
+                    <div class="patch-step-content">
+                        <h3>Resolve with Structure</h3>
+                        <p>Patch supports clear remediation paths so problems are addressed before relationships break.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Why This Is Different -->
+    <section class="outcomes-section">
+        <div class="container">
+            <h2 class="section-headline">Why This Is Different</h2>
+            <div class="outcomes-grid">
+                <div class="outcome-card">
+                    <div class="outcome-icon" style="font-size: 40px;">🛡️</div>
+                    <h3>Reduces downside risk</h3>
+                    <p>Protects outcomes when stakes are high without turning every issue into a legal or political escalation.</p>
+                </div>
+                <div class="outcome-card">
+                    <div class="outcome-icon" style="font-size: 40px;">📋</div>
+                    <h3>Shared system of record <span class="sparkle">✨</span></h3>
+                    <p>Creates transparency for what was promised, how delivery is tracking, and what happens if expectations diverge. <strong>AI automatically maintains this record</strong> as things change.</p>
+                </div>
+                <div class="outcome-card">
+                    <div class="outcome-icon" style="font-size: 40px;">🎯</div>
+                    <h3>Resolution-first approach</h3>
+                    <p>Prioritizes fixing problems before relationships break, with clear remediation paths.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Relationship to Stitch -->
+    <section class="pillars-section">
+        <div class="container">
+            <h2 class="section-headline">Relationship to Thread Stitch</h2>
+            <p style="text-align: center; font-size: 18px; color: var(--text-light); max-width: 800px; margin: 0 auto 40px; line-height: 1.6;">
+                Thread Stitch helps teams execute implementation. Patch exists for when execution meets reality.
+            </p>
+            <div class="patch-stitch-comparison">
+                <div class="patch-stitch-card">
+                    <h3>Thread Stitch</h3>
+                    <p><strong>Execution</strong></p>
+                    <p>Helps teams execute implementation. Earns trust through delivery.</p>
+                </div>
+                <div class="patch-stitch-card">
+                    <h3>Thread Patch</h3>
+                    <p><strong>Protection</strong></p>
+                    <p>Exists for when execution meets reality. Protects outcomes when stakes are high.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2 class="section-headline">Pricing</h2>
+            <p style="text-align: center; font-size: 18px; color: var(--text-light); max-width: 800px; margin: 0 auto 40px; line-height: 1.6;">
+                Patch pricing is tied to the value of the software being assured, not seats or usage.
+            </p>
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Assured Contract Value</th>
+                            <th>Patch Fee (Annual)</th>
+                            <th>Coverage Scope</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Up to $100k</td>
+                            <td>2.5%</td>
+                            <td>Standard</td>
+                        </tr>
+                        <tr>
+                            <td>$100k – $500k</td>
+                            <td>3.0%</td>
+                            <td>Standard</td>
+                        </tr>
+                        <tr>
+                            <td>$500k – $1M</td>
+                            <td>3.5%</td>
+                            <td>Expanded</td>
+                        </tr>
+                        <tr>
+                            <td>$1M+</td>
+                            <td>Custom</td>
+                            <td>Expanded + Review</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="margin-top: 40px; max-width: 800px; margin-left: auto; margin-right: auto; padding-top: 24px; border-top: 1px solid var(--border-color);">
+                    <div style="font-size: 11px; color: var(--text-light); line-height: 1.6; opacity: 0.7;">
+                        <p style="font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; font-size: 11px;">What pricing includes</p>
+                        <p style="margin-bottom: 16px;">Structured promise ledger • Ongoing issue tracking • Remediation workflows • Defined coverage limits per contract</p>
+                        <p style="font-weight: 600; margin-bottom: 8px; margin-top: 20px; text-transform: uppercase; letter-spacing: 0.5px; font-size: 11px;">Coverage notes</p>
+                        <p>Patch covers a defined percentage of the assured contract value. Coverage is capped and transparent. Not all issues result in payouts; Patch prioritizes resolution first.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Price Calculator Section -->
+            <div class="patch-calculator-section">
+                <!-- Testimonials -->
+                <div class="patch-testimonials">
+                    <div class="patch-testimonial">
+                        <p class="patch-testimonial-quote">"Patch gave us a structured way to resolve issues during our Salesforce rollout without escalating to legal or executive leadership."</p>
+                        <p class="patch-testimonial-author">— VP of Operations, Enterprise SaaS Buyer</p>
+                    </div>
+                    <div class="patch-testimonial-divider">⸻</div>
+                    <div class="patch-testimonial">
+                        <p class="patch-testimonial-quote">"When assumptions broke down mid-implementation, Patch helped both sides realign and move forward instead of arguing about what was promised."</p>
+                        <p class="patch-testimonial-author">— Director of Procurement</p>
+                    </div>
+                    <div class="patch-testimonial-divider">⸻</div>
+                    <div class="patch-testimonial">
+                        <p class="patch-testimonial-quote">"We resolved deployment issues roughly 30% faster once expectations and remediation paths were clearly documented."</p>
+                        <p class="patch-testimonial-author">— Head of Business Systems</p>
+                    </div>
+                </div>
+                
+                <!-- Calculator -->
+                <div class="patch-calculator">
+                    <h3>Explore the assurance coverage for your next big purchase</h3>
+                    <div class="calculator-input-group">
+                        <label for="contract-value">Assured Contract Value</label>
+                        <div class="calculator-input-wrapper">
+                            <input type="range" id="contract-value" class="calculator-slider" min="10000" max="1000000" value="500000" step="10000">
+                            <input type="text" id="contract-value-input" class="calculator-input" value="$500,000">
+                        </div>
+                    </div>
+                    <div class="calculator-input-group">
+                        <label for="assurance-range">Assurance Coverage Range</label>
+                        <div class="calculator-input-wrapper">
+                            <input type="range" id="assurance-range" class="calculator-slider" min="25" max="100" value="75" step="5">
+                            <input type="text" id="assurance-range-input" class="calculator-input" value="75%">
+                        </div>
+                    </div>
+                    <div class="calculator-results">
+                        <div class="calculator-result-card">
+                            <div class="calculator-result-label">Monthly Fee</div>
+                            <div class="calculator-result-value" id="monthly-fee">$1,250</div>
+                            <div class="calculator-result-subtext" id="fee-rate-text">Based on contract tier & coverage</div>
+                        </div>
+                        <div class="calculator-result-card">
+                            <div class="calculator-result-label">Max Assurance Coverage</div>
+                            <div class="calculator-result-value" id="max-assurance">$375,000</div>
+                            <div class="calculator-result-subtext" id="assurance-percent-text">75% of contract value</div>
+                        </div>
+                    </div>
+                    <div class="calculator-large-contract">
+                        <p>Have a larger contract?</p>
+                        <a href="#" onclick="openCalendlyModal(); return false;">Contact us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Who Patch Is For -->
+    <section class="outcomes-section">
+        <div class="container">
+            <h2 class="section-headline">Who Patch Is For</h2>
+            <p style="text-align: center; font-size: 18px; color: var(--text-light); max-width: 800px; margin: 0 auto 60px; line-height: 1.6;">
+                Economic buyers responsible for large software decisions. Patch is best suited for purchases where failure would be expensive, visible, or reputationally damaging.
+            </p>
+            <div class="patch-who-for">
+                <div class="patch-who-card">
+                    <h3>Buyers</h3>
+                    <ul>
+                        <li>Procurement</li>
+                        <li>Finance</li>
+                        <li>Executive sponsors</li>
+                        <li>Transformation leaders</li>
+                    </ul>
+                </div>
+                <div class="patch-who-card">
+                    <h3>Use Cases</h3>
+                    <ul>
+                        <li>Initial high-risk purchases</li>
+                        <li>Politically sensitive rollouts</li>
+                        <li>Repeatable standard for future software buying</li>
+                        <li>Default policy adoption over time</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. CTA / Early Access Close -->
+    <section id="early-access" class="explainer-section footer-transition footer-bg">
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="explainer-content" style="text-align: center;">
+                <h2 class="section-headline" style="margin-bottom: 24px;">Request Early Access</h2>
+                <p class="explainer-text" style="font-size: 20px; line-height: 1.8; color: var(--text-light); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Patch is currently offered through a limited early access program with select buyers and vendors.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#" class="btn-primary" onclick="openCalendlyModal(); return false;">Request access</a>
+                    <a href="#" class="btn-secondary" onclick="openCalendlyModal(); return false;">Talk to us about a high-stakes purchase</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer footer-full-bleed">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main-content">
+                    <div class="footer-brand">
+                        <div class="logo">Thread</div>
+                        <p>Built for the future of customer success</p>
+                    </div>
+                    <div class="footer-ctas">
+                        <a href="#" class="btn-primary" onclick="openCalendlyModal(); return false;">Request Demo</a>
+                    </div>
+                </div>
+                <div class="footer-links-grouped">
+                    <div class="footer-links-column">
+                        <h4 class="footer-links-heading">Products</h4>
+                        <a href="index.html">Stitch</a>
+                        <a href="patch.html">Patch <span style="font-size: 10px; background: var(--gradient-primary); color: white; padding: 2px 6px; border-radius: 4px; margin-left: 4px; font-weight: 600;">Beta</span></a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4 class="footer-links-heading">Legal</h4>
+                        <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy</a>
+                        <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms</a>
+                        <a href="subprocessors.html" target="_blank" rel="noopener noreferrer">Subprocessors</a>
+                        <a href="cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookies</a>
+                        <a href="data-processing-agreement.html" target="_blank" rel="noopener noreferrer">DPA</a>
+                        <a href="compliance-report.html" target="_blank" rel="noopener noreferrer">Compliance</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4 class="footer-links-heading">Company</h4>
+                        <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer">Sign In</a>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2025 Thread Solutions Inc. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Calendly Modal -->
+    <div id="calendly-modal" class="calendly-modal">
+        <div class="calendly-modal-overlay"></div>
+        <div class="calendly-modal-content">
+            <button class="calendly-modal-close" id="calendly-modal-close">&times;</button>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/justin-thread/30min" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Price Calculator Logic
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(value);
+        }
+
+        function formatPercent(value) {
+            return value.toFixed(1) + '%';
+        }
+
+        function calculatePatchFee(contractValue, assuranceRange) {
+            // Base rate from contract value tier
+            let baseRate;
+            if (contractValue <= 100000) {
+                baseRate = 0.025;
+            } else if (contractValue <= 500000) {
+                baseRate = 0.030;
+            } else if (contractValue <= 1000000) {
+                baseRate = 0.035;
+            } else {
+                baseRate = 0.035;
+            }
+            
+            // Adjust rate based on assurance range (higher coverage = higher rate)
+            // Scale: 25% coverage = 0.5x rate, 100% coverage = 1.5x rate
+            const coverageMultiplier = 0.5 + (assuranceRange / 100) * 1.0;
+            const adjustedRate = baseRate * coverageMultiplier;
+            
+            return { rate: adjustedRate, baseRate: baseRate };
+        }
+
+        function updateCalculator() {
+            const contractValue = parseInt(document.getElementById('contract-value').value);
+            const assuranceRange = parseInt(document.getElementById('assurance-range').value);
+            
+            // Update input displays
+            document.getElementById('contract-value-input').value = formatCurrency(contractValue);
+            document.getElementById('assurance-range-input').value = assuranceRange + '%';
+            
+            // Calculate Patch fee based on contract value tiers and assurance range
+            const feeInfo = calculatePatchFee(contractValue, assuranceRange);
+            const annualFee = contractValue * feeInfo.rate;
+            const monthlyFee = annualFee / 12;
+            
+            // Calculate max assurance coverage
+            const maxAssurance = contractValue * (assuranceRange / 100);
+            
+            // Update results
+            document.getElementById('monthly-fee').textContent = formatCurrency(monthlyFee);
+            document.getElementById('fee-rate-text').textContent = 'Based on ' + formatPercent(feeInfo.baseRate * 100) + ' base rate × ' + formatPercent(assuranceRange) + ' coverage';
+            document.getElementById('max-assurance').textContent = formatCurrency(maxAssurance);
+            document.getElementById('assurance-percent-text').textContent = formatPercent(assuranceRange) + ' of contract value';
+        }
+
+        // Initialize calculator
+        document.addEventListener('DOMContentLoaded', function() {
+            const contractSlider = document.getElementById('contract-value');
+            const contractInput = document.getElementById('contract-value-input');
+            const assuranceSlider = document.getElementById('assurance-range');
+            const assuranceInput = document.getElementById('assurance-range-input');
+            
+            // Slider events
+            contractSlider.addEventListener('input', function() {
+                updateCalculator();
+            });
+            
+            assuranceSlider.addEventListener('input', function() {
+                updateCalculator();
+            });
+            
+            // Input events
+            contractInput.addEventListener('input', function() {
+                let value = parseInt(this.value.replace(/[^0-9]/g, ''));
+                if (value < 10000) value = 10000;
+                if (value > 1000000) value = 1000000;
+                contractSlider.value = value;
+                updateCalculator();
+            });
+            
+            assuranceInput.addEventListener('input', function() {
+                let value = parseInt(this.value.replace(/[^0-9]/g, ''));
+                if (value < 25) value = 25;
+                if (value > 100) value = 100;
+                assuranceSlider.value = value;
+                updateCalculator();
+            });
+            
+            // Initial calculation
+            updateCalculator();
+        });
+    </script>
+</body>
+</html>

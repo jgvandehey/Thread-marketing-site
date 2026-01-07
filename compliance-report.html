@@ -170,33 +170,54 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer footer-full-bleed">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">Thread</div>
-                    <p>Built for the future of customer success</p>
-                </div>
-                <div class="footer-ctas">
-                    <a href="index.html#demo" class="btn-primary">Request Demo</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
-                    <p>&copy; 2025 Thread Solutions Inc. All rights reserved.</p>
-                    <div style="display: flex; gap: 24px; flex-wrap: wrap;">
-                        <a href="privacy.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Privacy</a>
-                        <a href="terms.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Terms</a>
-                        <a href="subprocessors.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Subprocessors</a>
-                        <a href="cookie-policy.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Cookies</a>
-                        <a href="data-processing-agreement.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">DPA</a>
-                        <a href="compliance-report.html" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Compliance</a>
-                        <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer" style="color: rgba(255, 255, 255, 0.6); text-decoration: none; font-size: 14px;">Sign In</a>
+                <div class="footer-main-content">
+                    <div class="footer-brand">
+                        <div class="logo">Thread</div>
+                        <p>Built for the future of customer success</p>
                     </div>
+                    <div class="footer-ctas">
+                        <a href="#" class="btn-primary" onclick="openCalendlyModal(); return false;">Request Demo</a>
+                    </div>
+                </div>
+                <div class="footer-links-grouped">
+                    <div class="footer-links-column">
+                        <h4 class="footer-links-heading">Products</h4>
+                        <a href="index.html">Stitch</a>
+                        <a href="patch.html">Patch <span style="font-size: 10px; background: var(--gradient-primary); color: white; padding: 2px 6px; border-radius: 4px; margin-left: 4px; font-weight: 600;">Beta</span></a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4 class="footer-links-heading">Legal</h4>
+                        <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy</a>
+                        <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms</a>
+                        <a href="subprocessors.html" target="_blank" rel="noopener noreferrer">Subprocessors</a>
+                        <a href="cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookies</a>
+                        <a href="data-processing-agreement.html" target="_blank" rel="noopener noreferrer">DPA</a>
+                        <a href="compliance-report.html" target="_blank" rel="noopener noreferrer">Compliance</a>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4 class="footer-links-heading">Company</h4>
+                        <a href="https://stitch.thread.app/login" target="_blank" rel="noopener noreferrer">Sign In</a>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2025 Thread Solutions Inc. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
+
+    <!-- Calendly Modal -->
+    <div id="calendly-modal" class="calendly-modal">
+        <div class="calendly-modal-overlay"></div>
+        <div class="calendly-modal-content">
+            <button class="calendly-modal-close" id="calendly-modal-close">&times;</button>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/justin-thread/30min" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
