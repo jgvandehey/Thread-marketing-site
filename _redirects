@@ -1,0 +1,18 @@
+# Netlify redirects to remove .html extension
+/patch /patch.html 200
+/privacy /privacy.html 200
+/terms /terms.html 200
+/subprocessors /subprocessors.html 200
+/cookie-policy /cookie-policy.html 200
+/data-processing-agreement /data-processing-agreement.html 200
+/compliance-report /compliance-report.html 200
+
+# Redirect .html URLs to clean URLs (301 permanent redirect)
+/patch.html /patch 301
+/privacy.html /privacy 301
+/terms.html /terms 301
+/subprocessors.html /subprocessors 301
+/cookie-policy.html /cookie-policy 301
+/data-processing-agreement.html /data-processing-agreement 301
+/compliance-report.html /compliance-report 301
+
