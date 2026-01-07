@@ -1,0 +1,70 @@
+{
+  "rewrites": [
+    {
+      "source": "/patch",
+      "destination": "/patch.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/subprocessors",
+      "destination": "/subprocessors.html"
+    },
+    {
+      "source": "/cookie-policy",
+      "destination": "/cookie-policy.html"
+    },
+    {
+      "source": "/data-processing-agreement",
+      "destination": "/data-processing-agreement.html"
+    },
+    {
+      "source": "/compliance-report",
+      "destination": "/compliance-report.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/patch.html",
+      "destination": "/patch",
+      "permanent": true
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/terms.html",
+      "destination": "/terms",
+      "permanent": true
+    },
+    {
+      "source": "/subprocessors.html",
+      "destination": "/subprocessors",
+      "permanent": true
+    },
+    {
+      "source": "/cookie-policy.html",
+      "destination": "/cookie-policy",
+      "permanent": true
+    },
+    {
+      "source": "/data-processing-agreement.html",
+      "destination": "/data-processing-agreement",
+      "permanent": true
+    },
+    {
+      "source": "/compliance-report.html",
+      "destination": "/compliance-report",
+      "permanent": true
+    }
+  ]
+}
+
