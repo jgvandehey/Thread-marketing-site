@@ -64,6 +64,11 @@
       "source": "/compliance-report.html",
       "destination": "/compliance-report",
       "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
